@@ -2,16 +2,6 @@
 /* let v = 1;
 v = v + 1;
 console.log(v); */
-let v = true;
-v = v + 1;
-console.log(v);
-//# sourceMappingURL=Aufgabe_01.js.map
-
-
-"use strict";
-/* let v = 1;
-v = v + 1;
-console.log(v); */
 let v = 1;
 v = v + 1;
 console.log(v);
