@@ -5,6 +5,7 @@ var Boxes;
     let color;
     let x = 0;
     let y = 0;
+    console.log("lel");
     for (let i = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;

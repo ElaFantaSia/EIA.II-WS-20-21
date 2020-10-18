@@ -53,8 +53,8 @@ namespace Cows {
     function createCall(_start: string, _length: number): string {
     for (let k: number = _length; k > 0; k--) {
     if (k == 1 || k == _length / 2)
-_   start += "h";
-_   start += "u";
+    _start += "h";
+    _start += "u";
     }
     return _start;
 }
