@@ -14,7 +14,7 @@ var L03_FormElements;
     }
     function handleChange(_event) {
         let target = _event.target;
-        console.log();
+        console.log("Init");
         if (_event.type == "change")
             console.warn("Change: " + target.name + " = " + target.value, _event);
         else

@@ -15,7 +15,7 @@ namespace L03_FormElements {
 
     function handleChange(_event: Event): void {
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        console.log();
+        console.log("Init");
         if (_event.type == "change")
             console.warn("Change: " + target.name + " = " + target.value, _event);
         else
