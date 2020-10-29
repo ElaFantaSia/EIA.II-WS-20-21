@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexenkessel</title>
+    <link rel="stylesheet" href="hexenkessel.css" type="text/css" media="screen" />
+	<script src="hexenkessel.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Magic Cauldron - Recipe</h1>
+        <p>Choose and type in before boiling</p>
+    </header>
+
+    <form>
+        <div id="form">
+            <h2>Type in / Choose here:</h2>
+            <fieldset>
+                <legend>Name</legend>
+                <input type="text" name="Name" placeholder="Type in potions name">        // Wie kann ich placeholder einfügen? Hier oder ts?
+            </fieldset>
+
+            <fieldset>
+                <legend>Description, riscs, side effects</legend>
+                <input type="textarea" name="" placeholder="Type in here">
+            </fieldset>
+
+            <fieldset>
+                <legend>Kind of potion</legend>
+                <selecct name="Kind of potion" id="kindOfPotion">
+                    <option value="Love potion"></option>
+                    <option value="Forever young potion"></option>
+                    <option value="Healing potion"></option>
+                    <option value="Concentration Potion"></option>
+                </selecct>
+            </fieldset>
+        </div>
+    </form>
+    
+</body>
+</html>
