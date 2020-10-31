@@ -19,25 +19,86 @@
             <h2>Type in / Choose here:</h2>
             <fieldset>
                 <legend>Name</legend>
-                <input type="text" name="Name" placeholder="Type in potions name">        // Wie kann ich placeholder einfügen? Hier oder ts?
+                <input type="text" name="Name" placeholder="Type in potions name">        
             </fieldset>
 
             <fieldset>
                 <legend>Description, riscs, side effects</legend>
-                <input type="textarea" name="" placeholder="Type in here">
+                <textarea type="textarea" name="" placeholder="Type in here"></textarea>
             </fieldset>
 
             <fieldset>
-                <legend>Kind of potion</legend>
-                <selecct name="Kind of potion" id="kindOfPotion">
-                    <option value="Love potion"></option>
-                    <option value="Forever young potion"></option>
-                    <option value="Healing potion"></option>
-                    <option value="Concentration Potion"></option>
-                </selecct>
+                <legend>Kind of potion</legend>                              
+                <select name="Kind of potion" id="kindOfPotion">
+                    <option value="" disabled selected >Choose wanted effects</option>
+                    <option value="Love">Love potion</option>
+                    <option value="Young">Forever young potion</option>
+                    <option value="Heal">Healing potion</option>
+                    <option value="Concentration">Concentration Potion</option>
+                    <option value="Poisoning">Poisoning Potion</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Duration to full effect</legend>
+                <span id ="sliderDuration">
+                    <span>1 minute
+                        <input type="range" name="Duration" id="duration" min="1" max="120" step="1" value="1">
+                        120 minutes
+                    <!-- </span> -->
+                    <!-- <span><progress max="1" value="1" ></progress></span> -->
+                <!-- </span> -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Instructions</legend>
+                <select name="Add" id="add">   
+                <option value="" disabled selected >Add</option>
+                <option price="1" value="firefly">Fireflywings</option>
+                <option price="0.4" value="earwigs">Earwigs</option>
+                <option price="0.5" value="lizard">Lizard blood</option>
+                <option price="1.9" value="fairy">Fairy dust</option>
+                <option price="0.3" value="nosehair">Nosehair</option>
+                </select>
+            
+                <input type="text" name="amount" placeholder="amount in gramm"> 
+                <p>Heat to</p><input type="text" name="heat" placeholder=°C>  
+                <p>Cool down to</p><input type="text" name="cool" placeholder=°C>  
+                <br>
+                <span id ="sliderStir">
+                    <span>Stir softly
+                        <input type="range" name="stir" id="stir" min="1" max="10" step="1" value="1">
+                        forcefully
+                    </span>
+                </span>
+                    <br>
+
+                <input type="radio" name="consistency" id="liquid" value="liquid" checked>
+                <label for="liquid">Liquid</label>
+                <input type="radio" name="consistency" id="pasty" value="pasty">
+                <label for="pasty">Pasty</label>
+                <input type="radio" name="consistency" id="tough" value="tough">
+                <label for="tough">Tough</label>
+
+
+                <input type="color">
+
+                <!--<legend>Colors</legend>
+                <input type="checkbox" name="Colors" id="white" value="White">
+                <label for="white">White</label>
+                <input type="checkbox" name="Colors" id="black" value="Black">
+                <label for="black">Black</label> -->
             </fieldset>
         </div>
     </form>
+
+    <div>
+        <h2>Your recipe:</h2>
+        <div id="recipe">
+            
+        </div>
+        <p>Total:</p>
+    </div>
     
 </body>
 </html>
