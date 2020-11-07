@@ -1,7 +1,9 @@
 //import { stderr } from "process";
-
+ //Input Elemente aus HTML in TS Variablen speichern
 namespace L04_Hexenkessel {
     window.addEventListener("load", handleLoad);
+
+    generateContent(data);
     
     let name: HTMLInputElement = <HTMLInputElement> document.querySelector ("#name");
     let description: HTMLInputElement = <HTMLInputElement> document.querySelector ("#description");
@@ -16,10 +18,10 @@ namespace L04_Hexenkessel {
     let pasty: HTMLInputElement = <HTMLInputElement> document.querySelector ("#pasty");
     let solid: HTMLInputElement = <HTMLInputElement> document.querySelector ("#solid");
     let color: HTMLInputElement = <HTMLInputElement> document.querySelector ("#color");
-    let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+    //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
 
-    //Input Elemente aus HTML in TS Variablen speichern
-
+   
+ //Event listener hinzufügen an alle input elemente
     function handleLoad(): void {
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
@@ -36,55 +38,78 @@ namespace L04_Hexenkessel {
         color.addEventListener("input", displayColor);
     }
 
-  
-    //Event listerner hinzufügen an alle input elemente
+  //Funktinen zum auslesen bei veränderung erstellen
+   
     let divname: HTMLDivElement = <HTMLDivElement>document.querySelector("#divname");
+
+
+    
     function displayName (): void {
         console.log(name.value);
         divname.innerHTML = "" + name.value;
         /* let namepot: string = name.value;
         namepot.innerHTML = "" + name;  */
     }
+    let divdescription: HTMLDivElement = <HTMLDivElement>document.querySelector("#divdescription");
     function displayDescription (): void {
         console.log(description.value);
+        divdescription.innerHTML = "" + description.value;
     }
+    let divkindOfPotion: HTMLDivElement = <HTMLDivElement>document.querySelector("#divkindOfPotion");
     function displayKindOfPotion (): void {
         console.log(kindOfPotion.value);
+        divkindOfPotion.innerHTML = "" + kindOfPotion.value;
     }
+    let divduration: HTMLDivElement = <HTMLDivElement>document.querySelector("#divduration");
     function displayDuration (): void {
         console.log(duration.value);
+        divduration.innerHTML = "" + duration.value;
     }
+    let divadd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
     function displayAdd (): void {
         console.log(add.value);
+        divadd.innerHTML = "" + add.value;
     }
+    let divamount: HTMLDivElement = <HTMLDivElement>document.querySelector("#divamount");
     function displayAmount (): void {
         console.log(amount.value);
+        divamount.innerHTML = "" + amount.value;
     }
+    let divheat: HTMLDivElement = <HTMLDivElement>document.querySelector("#divheat");
     function displayHeat (): void {
         console.log(heat.value);
+        divheat.innerHTML = "" + heat.value;
     }
+    let divcool: HTMLDivElement = <HTMLDivElement>document.querySelector("#divcool");
     function displayCool (): void {
         console.log(cool.value);
+        divcool.innerHTML = "" + cool.value;
     }
+    let divstir: HTMLDivElement = <HTMLDivElement>document.querySelector("#divstir");
     function displayStir (): void {
         console.log(stir.value);
+        divstir.innerHTML = "" + stir.value;
     }
+    let divliquid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divliquid");
     function displayLiquid (): void {
         console.log(liquid.value);
+        divliquid.innerHTML = "" + liquid.value;
     }
-    function displayPasty (): void {
+    let divpasty: HTMLDivElement = <HTMLDivElement>document.querySelector("#divpasty");
+    function displayPasty(): void {
         console.log(pasty.value);
+        divpasty.innerHTML = "" + pasty.value;
     }
-    function displaySolid (): void {
+    let divsolid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divsolid");
+    function displaySolid(): void {
         console.log(solid.value);
+        divsolid.innerHTML = "" + solid.value;
     }
-    function displayColor (): void {
+    let divcolor: HTMLDivElement = <HTMLDivElement>document.querySelector("#divcolor");
+    function displayColor(): void {
         console.log(color.value);
-    }
-    //Funktinen zum auslesen bei veränderung erstellen
-
-   
-    
+        divcolor.innerHTML = "" + color.value;
+    }  
 }
 
 

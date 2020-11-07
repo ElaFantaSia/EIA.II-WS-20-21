@@ -1,8 +1,10 @@
 "use strict";
 //import { stderr } from "process";
+//Input Elemente aus HTML in TS Variablen speichern
 var L04_Hexenkessel;
 (function (L04_Hexenkessel) {
     window.addEventListener("load", handleLoad);
+    L04_Hexenkessel.generateContent(L04_Hexenkessel.data);
     let name = document.querySelector("#name");
     let description = document.querySelector("#description");
     let kindOfPotion = document.querySelector("#kindOfPotion");
@@ -16,8 +18,8 @@ var L04_Hexenkessel;
     let pasty = document.querySelector("#pasty");
     let solid = document.querySelector("#solid");
     let color = document.querySelector("#color");
-    let recipe = document.querySelector("#recipe");
-    //Input Elemente aus HTML in TS Variablen speichern
+    //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+    //Event listener hinzufügen an alle input elemente
     function handleLoad() {
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
@@ -33,7 +35,7 @@ var L04_Hexenkessel;
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
     }
-    //Event listerner hinzufügen an alle input elemente
+    //Funktinen zum auslesen bei veränderung erstellen
     let divname = document.querySelector("#divname");
     function displayName() {
         console.log(name.value);
@@ -41,42 +43,65 @@ var L04_Hexenkessel;
         /* let namepot: string = name.value;
         namepot.innerHTML = "" + name;  */
     }
+    let divdescription = document.querySelector("#divdescription");
     function displayDescription() {
         console.log(description.value);
+        divdescription.innerHTML = "" + description.value;
     }
+    let divkindOfPotion = document.querySelector("#divkindOfPotion");
     function displayKindOfPotion() {
         console.log(kindOfPotion.value);
+        divkindOfPotion.innerHTML = "" + kindOfPotion.value;
     }
+    let divduration = document.querySelector("#divduration");
     function displayDuration() {
         console.log(duration.value);
+        divduration.innerHTML = "" + duration.value;
     }
+    let divadd = document.querySelector("#divadd");
     function displayAdd() {
         console.log(add.value);
+        divadd.innerHTML = "" + add.value;
     }
+    let divamount = document.querySelector("#divamount");
     function displayAmount() {
         console.log(amount.value);
+        divamount.innerHTML = "" + amount.value;
     }
+    let divheat = document.querySelector("#divheat");
     function displayHeat() {
         console.log(heat.value);
+        divheat.innerHTML = "" + heat.value;
     }
+    let divcool = document.querySelector("#divcool");
     function displayCool() {
         console.log(cool.value);
+        divcool.innerHTML = "" + cool.value;
     }
+    let divstir = document.querySelector("#divstir");
     function displayStir() {
         console.log(stir.value);
+        divstir.innerHTML = "" + stir.value;
     }
+    let divliquid = document.querySelector("#divliquid");
     function displayLiquid() {
         console.log(liquid.value);
+        divliquid.innerHTML = "" + liquid.value;
     }
+    let divpasty = document.querySelector("#divpasty");
     function displayPasty() {
         console.log(pasty.value);
+        divpasty.innerHTML = "" + pasty.value;
     }
+    let divsolid = document.querySelector("#divsolid");
     function displaySolid() {
         console.log(solid.value);
+        divsolid.innerHTML = "" + solid.value;
     }
+    let divcolor = document.querySelector("#divcolor");
     function displayColor() {
         console.log(color.value);
+        divcolor.innerHTML = "" + color.value;
     }
-    //Funktinen zum auslesen bei veränderung erstellen
 })(L04_Hexenkessel || (L04_Hexenkessel = {}));
 //# sourceMappingURL=hexenkessel.js.map

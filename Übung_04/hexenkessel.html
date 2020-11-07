@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hexenkessel</title>
     <link rel="stylesheet" href="hexenkessel.css" type="text/css" media="screen" />
+    <script src="data.js" defer></script>
+    <script src="GenerateContent.js" defer></script>
 	<script src="hexenkessel.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body>
-    <header>
+    <header id="lel">
         <h1>Magic Cauldron - Recipe</h1>
         <p>Choose and type in before boiling</p>
     </header>
@@ -27,16 +29,16 @@
                 <textarea type="textarea" name="description" id="description" placeholder="Type in here"></textarea>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="fieldsetForselect1">
                 <legend>Kind of potion</legend>                              
-                <select name="Kind of potion" id="kindOfPotion">
+                <!-- <select name="Kind of potion" id="kindOfPotion">
                     <option value="" name="vorab1"disabled selected >Choose wanted effects</option>
                     <option value="Love potion" name="love">Love potion</option>
                     <option value="Forever young potion" name="young">Forever young potion</option>
                     <option value="Healing potion" name="heal">Healing potion</option>
                     <option value="Concentration potion" name="cencent">Concentration Potion</option>
                     <option value="Poisoning potion" name="poisn">Poisoning Potion</option>
-                </select>
+                </select> -->
             </fieldset>
 
             <fieldset>
@@ -51,18 +53,21 @@
                 </span>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="fieldsetForselect2">
                 <legend>Instructions</legend>
-                <select name="Add" id="add">   
+                <!-- <select name="Add" id="add">   
                 <option value="" name="vorab" disabled selected >Add</option>
                 <option price="1" name="firefly" value="firefly">Fireflywings</option>
                 <option price="0.4" name="earwigs" value="earwigs" >Earwigs</option>
                 <option price="0.5" name="lizard" value="lizard" >Lizard blood</option>
                 <option price="1.9" name="fairy" value="fairy" >Fairy dust</option>
                 <option price="0.3" name="nosehair" value="nosehair" >Nosehair</option>
-                </select>
+                </select> -->
+                <div id="divForselect2">
+                    <input type="text" name="amount" id="amount" placeholder="amount in gramm"> 
+                </div>
             
-                <input type="text" name="amount" id="amount" placeholder="amount in gramm"> 
+                
                 <p>Heat to</p><input type="text" name="heat" id="heat" placeholder=°C>  
                 <p>Cool down to</p><input type="text" name="cool" id="cool" placeholder=°C>  
                 <br>
@@ -74,11 +79,11 @@
                 </span>
                     <br>
 
-                <input type="radio" name="consistency" id="liquid" value="liquid">
+                <input type="radio" name="consist" id="liquid" value="liquid">
                 <label for="liquid">Liquid</label>
-                <input type="radio" name="consistency" id="pasty" value="pasty">
+                <input type="radio" name="consist" id="pasty" value="pasty">
                 <label for="pasty">Pasty</label>
-                <input type="radio" name="consistency" id="solid" value="solid">
+                <input type="radio" name="consist" id="solid" value="solid">
                 <label for="solid">Solid</label>
 
 
@@ -95,19 +100,21 @@
 
     <div>
         <h2>Your recipe:</h2>
-        <div>Name: <div id="divname"></div> </div>
-        <div id="divdescription">Description: </div>
-        <div id="kindOfPotion">Kind of potion: </div>
-        <div id="duration">Duration: </div>
-        <div id="add">Add: </div>
-        <div id="amount">Amount: </div>
-        <div id="heat">Heat to: </div>
-        <div id="cool">Cool down to: </div>
-        <div id="stir">Stir: </div>
-        <div id="liquid">Name: </div>
-        <div id="pasty">Name: </div>
-        <div id="solid">Name: </div>
-        <div id="color">Name: </div>
+        <div>Name: <div id="divname"></div></div>
+        <div>Description:  <div id="divdescription"></div></div>
+        <div>Kind of potion: <div id="divkindOfPotion"></div></div>
+        <div>Duration: <div id="divduration"></div></div>
+        <div>Add: <div id="divadd"></div></div>
+        <div>Amount: <div id="divamount"></div></div>
+        <div>Heat to: <div id="divheat"></div></div>
+        <div>Cool down to: <div id="divcool"></div></div>
+        <div>Stir: <div id="divstir"></div></div>
+        <div>liquid: <div id="divliquid"></div></div>
+        <div>pasty: <div id="divpasty"></div></div>
+        <div>solid: <div id="divsolid"></div></div>
+        <!-- <div>Consistency: <div id="consistency"></div></div> -->
+        <div>color: <div id="divcolor"></div></div>
+        
 
         <div id="recipe">
          <p>Total:</p>   
