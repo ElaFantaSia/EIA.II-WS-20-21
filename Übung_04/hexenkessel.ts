@@ -1,9 +1,17 @@
-//import { stderr } from "process";
+//import { URLSearchParams } from "url";
+
  //Input Elemente aus HTML in TS Variablen speichern
 namespace L04_Hexenkessel {
+
+    //import { stderr } from "process";
+
+    
+    
+    generateContent(data, data2);
     window.addEventListener("load", handleLoad);
 
-    generateContent(data);
+    
+
     
     let name: HTMLInputElement = <HTMLInputElement> document.querySelector ("#name");
     let description: HTMLInputElement = <HTMLInputElement> document.querySelector ("#description");
@@ -19,10 +27,13 @@ namespace L04_Hexenkessel {
     let solid: HTMLInputElement = <HTMLInputElement> document.querySelector ("#solid");
     let color: HTMLInputElement = <HTMLInputElement> document.querySelector ("#color");
     //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+    let button: HTMLButtonElement = <HTMLButtonElement> document.querySelector ("#buttonSent");
 
    
  //Event listener hinzufügen an alle input elemente
     function handleLoad(): void {
+        
+
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
         kindOfPotion.addEventListener("click", displayKindOfPotion);
@@ -36,6 +47,7 @@ namespace L04_Hexenkessel {
         pasty.addEventListener("input", displayPasty);
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
+        button.addEventListener("click", sendToServer);
     }
 
   //Funktinen zum auslesen bei veränderung erstellen
@@ -43,7 +55,7 @@ namespace L04_Hexenkessel {
     let divname: HTMLDivElement = <HTMLDivElement>document.querySelector("#divname");
 
 
-    
+
     function displayName (): void {
         console.log(name.value);
         divname.innerHTML = "" + name.value;
@@ -90,26 +102,45 @@ namespace L04_Hexenkessel {
         console.log(stir.value);
         divstir.innerHTML = "" + stir.value;
     }
-    let divliquid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divliquid");
+    //let divliquid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divliquid");
     function displayLiquid (): void {
-        console.log(liquid.value);
-        divliquid.innerHTML = "" + liquid.value;
+        displayConsistency(liquid);
     }
-    let divpasty: HTMLDivElement = <HTMLDivElement>document.querySelector("#divpasty");
+    //let divpasty: HTMLDivElement = <HTMLDivElement>document.querySelector("#divpasty");
     function displayPasty(): void {
-        console.log(pasty.value);
-        divpasty.innerHTML = "" + pasty.value;
+        displayConsistency(pasty);
     }
-    let divsolid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divsolid");
+    //let divsolid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divsolid");
     function displaySolid(): void {
-        console.log(solid.value);
-        divsolid.innerHTML = "" + solid.value;
+        displayConsistency(solid);
+    }
+    let consistency: HTMLDivElement = <HTMLDivElement>document.querySelector("#divconsistency");
+    function displayConsistency(_consistency: HTMLInputElement): void {
+        console.log(_consistency.value);
+        consistency.innerHTML = "" + _consistency.value;
     }
     let divcolor: HTMLDivElement = <HTMLDivElement>document.querySelector("#divcolor");
     function displayColor(): void {
         console.log(color.value);
         divcolor.innerHTML = "" + color.value;
     }  
-}
 
+
+    async function sendToServer(): Promise <void> {
+        let serverURL: string = "ServerAdresse";
+        serverURL += "/speichern";
+
+        let formData: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>formData);
+        serverURL += "?" + query.toString();
+
+        //serverURL += "&" + divname.innerHTML;
+        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
+        formular.reset();
+        window.alert("Daten wurden abgeschickt"); 
+
+        await fetch(serverURL);
+
+    }
+}
 

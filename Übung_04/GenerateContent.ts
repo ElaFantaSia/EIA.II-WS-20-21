@@ -1,13 +1,24 @@
 namespace L04_Hexenkessel {
-    export function generateContent(_data: Data): void {
-        console.log(_data);
-
-        generateKindOfPotion();
-        generateAdd();
+    export function generateContent(_data1: Data, _data2: Data2): void {
+        //console.log(_data);
+        generateAdd(_data1);
+        generateKindOfPotion(_data2);
+        
     }
 
-    function generateKindOfPotion(): void {
-        let select1: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
+    
+
+    function generateKindOfPotion(_data: Data2): void {
+
+        for (let category in _data) { //geht alle einzelnen Kategorien durch
+            let items: Auswahl[] = _data[category]; //speichert die aktuelle kategorie mit inhalt in items
+
+            if (category == "kindOfPotion") 
+                createSelectAuswahl(items);
+    
+        }
+    
+        /* let select1: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
         select1.setAttribute("id", "kindOfPotion");
         document.getElementById("fieldsetForselect1")?.appendChild(select1);
 
@@ -33,11 +44,47 @@ namespace L04_Hexenkessel {
 
         let option6: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         option6.innerHTML = "Poisoning potion";
-        select1.appendChild(option6);  
+        select1.appendChild(option6);  */ 
     }
 
-    function generateAdd(): void {
-        let select2: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
+    function createSelectAuswahl(_items: Auswahl[]): HTMLSelectElement {
+
+        let select1: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
+        select1.setAttribute("id", "kindOfPotion");
+        document.getElementById("fieldsetForselect1")?.appendChild(select1);
+
+        for (let item of _items) {
+            let option: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+            option.value = item.name;
+            option.innerHTML = item.name;
+            //if (item.name == "Choose wanted effect:") 
+            //wenn, dann soll disabled selected hinzugefügt werden, damit es nicht ausgewählt werden kann
+            select1.appendChild(option);
+        }
+
+
+        return select1;
+    }
+
+
+    
+
+    
+
+
+    function generateAdd(_data: Data): void {
+
+
+        for (let category in _data) {
+            let items: Item[] = _data[category];
+
+            /* if (category == "kindOfPotion") */
+            createSelectIngredients(items);
+    
+        }
+
+
+        /* let select2: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
         select2.setAttribute("id", "add");
         document.getElementById("divForselect2")?.appendChild(select2);
 
@@ -63,9 +110,30 @@ namespace L04_Hexenkessel {
 
         let optionAdd6: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd6.innerHTML = "Nosehair";
-        select2.appendChild(optionAdd6);
+        select2.appendChild(optionAdd6); */
 
     }
+
+
+    function createSelectIngredients(_items: Item[]): HTMLSelectElement {
+
+        let select2: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
+        select2.setAttribute("id", "add"); //damit selectelement über die id gewfunden wirden kann in hexenkessel.ts und ein event listeener hinzugefügt werden kann
+        document.getElementById("divForselect2")?.appendChild(select2);
+
+        
+        for (let item of _items) {
+            let option: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+            option.value = item.name;
+            option.innerHTML = item.name + " : " +  item.price.toFixed(2);
+            option.setAttribute("price", item.price.toFixed(2));
+            select2.appendChild(option);
+        }
+
+
+        return select2;
+    }
+
 
 
     /* let input1: HTMLInputElement = <HTMLInputElement>document.createElement("input");

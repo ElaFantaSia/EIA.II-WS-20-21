@@ -2,13 +2,34 @@
 var L04_Hexenkessel;
 (function (L04_Hexenkessel) {
     L04_Hexenkessel.data2 = {
+        Name: [
+            { name: "Name" }
+        ],
+        description: [
+            { name: "Description, riscs, side effects" }
+        ],
         kindOfPotion: [
+            { name: "Choose wanted effect:" },
             { name: "Love potion" },
             { name: "Forever young potion" },
             { name: "Healing potion" },
             { name: "Concentration potion" },
             { name: "Poisoning potion" },
             { name: "Klo potion" }
+        ],
+        amount: [
+            { name: "Amount in gramm" }
+        ],
+        heat: [
+            { name: "Heat to" }
+        ],
+        cool: [
+            { name: "Cool down to" }
+        ],
+        consist: [
+            { name: "Liquid" },
+            { name: "pasty" },
+            { name: "solid" }
         ]
     };
     L04_Hexenkessel.data = {

@@ -1,10 +1,10 @@
 namespace L04_Hexenkessel {
 
-    interface Item {
+    export interface Item {
         name: string;
         price: number;
     }
-    interface Auswahl {
+    export interface Auswahl {
         name: string;
     }
 
@@ -16,13 +16,40 @@ namespace L04_Hexenkessel {
     }
 
     export let data2: Data2 = {
+        Name: [
+            {name: "Name"}
+        ],
+
+        description: [
+            {name: "Description, riscs, side effects"}
+        ],
+
         kindOfPotion: [
+            {name: "Choose wanted effect:"},
             {name: "Love potion"},
             {name: "Forever young potion"},
             {name: "Healing potion"},
             {name: "Concentration potion"},
             {name: "Poisoning potion"},
             {name: "Klo potion"}
+        ],
+
+        amount: [
+            {name: "Amount in gramm"}
+        ],
+
+        heat: [
+            {name: "Heat to"}
+        ],
+
+        cool: [
+            {name: "Cool down to"}
+        ],
+
+        consist: [
+            {name: "Liquid"},
+            {name: "pasty"},
+            {name: "solid"}
         ]
     };
 

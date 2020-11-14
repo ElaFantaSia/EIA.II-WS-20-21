@@ -16,7 +16,7 @@
         <p>Choose and type in before boiling</p>
     </header>
 
-    <form method="post" action="">
+    <form method="post" action="" id="hexenkesselForm">
         <div id="form">
             <h2>Type in / Choose here:</h2>
             <fieldset>
@@ -89,14 +89,14 @@
 
                 <input type="color" name="color" id="color">
 
-                <!--<legend>Colors</legend>
+                <!--<legend>Colors</legend>        
                 <input type="checkbox" name="Colors" id="white" value="White">
                 <label for="white">White</label>
                 <input type="checkbox" name="Colors" id="black" value="Black">
                 <label for="black">Black</label> -->
             </fieldset>
         </div>
-        <button type="submit">Abschicken</button>  
+         
     </form>
 
     <div>
@@ -110,17 +110,17 @@
         <div>Heat to: <div id="divheat"></div></div>
         <div>Cool down to: <div id="divcool"></div></div>
         <div>Stir: <div id="divstir"></div></div>
-        <div>liquid: <div id="divliquid"></div></div>
+        <!-- <div>liquid: <div id="divliquid"></div></div>
         <div>pasty: <div id="divpasty"></div></div>
-        <div>solid: <div id="divsolid"></div></div>
-        <!-- <div>Consistency: <div id="consistency"></div></div> -->
+        <div>solid: <div id="divsolid"></div></div> -->
+        <div>Consistency: <div id="divconsistency"></div></div>
         <div>color: <div id="divcolor"></div></div>
         
 
         <div id="recipe">
          <p>Total:</p>   
         </div>
-        <button type="submit">Abschicken</button>  
+        <button type="submit" id="buttonSent">Abschicken</button>  
     </div>
     
 </body>

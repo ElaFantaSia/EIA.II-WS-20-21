@@ -1,57 +1,106 @@
 "use strict";
 var L04_Hexenkessel;
 (function (L04_Hexenkessel) {
-    function generateContent(_data) {
-        console.log(_data);
-        generateKindOfPotion();
-        generateAdd();
+    function generateContent(_data1, _data2) {
+        //console.log(_data);
+        generateAdd(_data1);
+        generateKindOfPotion(_data2);
     }
     L04_Hexenkessel.generateContent = generateContent;
-    function generateKindOfPotion() {
+    function generateKindOfPotion(_data) {
+        for (let category in _data) { //geht alle einzelnen Kategorien durch
+            let items = _data[category]; //speichert die aktuelle kategorie mit inhalt in items
+            if (category == "kindOfPotion")
+                createSelectAuswahl(items);
+        }
+        /* let select1: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
+        select1.setAttribute("id", "kindOfPotion");
+        document.getElementById("fieldsetForselect1")?.appendChild(select1);
+
+        let option1: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option1.innerHTML = "choose wanted effects";
+        select1.appendChild(option1);
+        
+        let option2: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option2.innerHTML = "Love potion";
+        select1.appendChild(option2);
+
+        let option3: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option3.innerHTML = "Forever young potion";
+        select1.appendChild(option3);
+        
+        let option4: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option4.innerHTML = "Healing potion";
+        select1.appendChild(option4);
+
+        let option5: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option5.innerHTML = "Concentration potion";
+        select1.appendChild(option5);
+
+        let option6: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+        option6.innerHTML = "Poisoning potion";
+        select1.appendChild(option6);  */
+    }
+    function createSelectAuswahl(_items) {
         let select1 = document.createElement("select");
         select1.setAttribute("id", "kindOfPotion");
         document.getElementById("fieldsetForselect1")?.appendChild(select1);
-        let option1 = document.createElement("option");
-        option1.innerHTML = "choose wanted effects";
-        select1.appendChild(option1);
-        let option2 = document.createElement("option");
-        option2.innerHTML = "Love potion";
-        select1.appendChild(option2);
-        let option3 = document.createElement("option");
-        option3.innerHTML = "Forever young potion";
-        select1.appendChild(option3);
-        let option4 = document.createElement("option");
-        option4.innerHTML = "Healing potion";
-        select1.appendChild(option4);
-        let option5 = document.createElement("option");
-        option5.innerHTML = "Concentration potion";
-        select1.appendChild(option5);
-        let option6 = document.createElement("option");
-        option6.innerHTML = "Poisoning potion";
-        select1.appendChild(option6);
+        for (let item of _items) {
+            let option = document.createElement("option");
+            option.value = item.name;
+            option.innerHTML = item.name;
+            //if (item.name == "Choose wanted effect:") 
+            //wenn, dann soll disabled selected hinzugefügt werden, damit es nicht ausgewählt werden kann
+            select1.appendChild(option);
+        }
+        return select1;
     }
-    function generateAdd() {
-        let select2 = document.createElement("select");
+    function generateAdd(_data) {
+        for (let category in _data) {
+            let items = _data[category];
+            /* if (category == "kindOfPotion") */
+            createSelectIngredients(items);
+        }
+        /* let select2: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
         select2.setAttribute("id", "add");
         document.getElementById("divForselect2")?.appendChild(select2);
-        let optionAdd1 = document.createElement("option");
+
+        let optionAdd1: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd1.innerHTML = "Add";
         select2.appendChild(optionAdd1);
-        let optionAdd2 = document.createElement("option");
+
+        let optionAdd2: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd2.innerHTML = "Firefly";
         select2.appendChild(optionAdd2);
-        let optionAdd3 = document.createElement("option");
+
+        let optionAdd3: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd3.innerHTML = "Earwigs";
         select2.appendChild(optionAdd3);
-        let optionAdd4 = document.createElement("option");
+
+        let optionAdd4: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd4.innerHTML = "Lizard";
         select2.appendChild(optionAdd4);
-        let optionAdd5 = document.createElement("option");
+
+        let optionAdd5: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd5.innerHTML = "Fairy";
         select2.appendChild(optionAdd5);
-        let optionAdd6 = document.createElement("option");
+
+        let optionAdd6: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
         optionAdd6.innerHTML = "Nosehair";
-        select2.appendChild(optionAdd6);
+        select2.appendChild(optionAdd6); */
+    }
+    function createSelectIngredients(_items) {
+        let select2 = document.createElement("select");
+        select2.setAttribute("id", "add"); //damit selectelement über die id gewfunden wirden kann in hexenkessel.ts und ein event listeener hinzugefügt werden kann
+        document.getElementById("divForselect2")?.appendChild(select2);
+        for (let item of _items) {
+            let option = document.createElement("option");
+            option.value = item.name;
+            option.innerHTML = item.name + " : " + item.price.toFixed(2);
+            option.setAttribute("price", item.price.toFixed(2));
+            select2.appendChild(option);
+        }
+        return select2;
     }
     /* let input1: HTMLInputElement = <HTMLInputElement>document.createElement("input");
     input1.setAttribute("type", "checkbox");

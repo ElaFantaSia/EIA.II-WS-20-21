@@ -1,10 +1,11 @@
 "use strict";
-//import { stderr } from "process";
+//import { URLSearchParams } from "url";
 //Input Elemente aus HTML in TS Variablen speichern
 var L04_Hexenkessel;
 (function (L04_Hexenkessel) {
+    //import { stderr } from "process";
+    L04_Hexenkessel.generateContent(L04_Hexenkessel.data, L04_Hexenkessel.data2);
     window.addEventListener("load", handleLoad);
-    L04_Hexenkessel.generateContent(L04_Hexenkessel.data);
     let name = document.querySelector("#name");
     let description = document.querySelector("#description");
     let kindOfPotion = document.querySelector("#kindOfPotion");
@@ -19,6 +20,7 @@ var L04_Hexenkessel;
     let solid = document.querySelector("#solid");
     let color = document.querySelector("#color");
     //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+    let button = document.querySelector("#buttonSent");
     //Event listener hinzufügen an alle input elemente
     function handleLoad() {
         name.addEventListener("input", displayName);
@@ -34,6 +36,7 @@ var L04_Hexenkessel;
         pasty.addEventListener("input", displayPasty);
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
+        button.addEventListener("click", sendToServer);
     }
     //Funktinen zum auslesen bei veränderung erstellen
     let divname = document.querySelector("#divname");
@@ -83,25 +86,39 @@ var L04_Hexenkessel;
         console.log(stir.value);
         divstir.innerHTML = "" + stir.value;
     }
-    let divliquid = document.querySelector("#divliquid");
+    //let divliquid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divliquid");
     function displayLiquid() {
-        console.log(liquid.value);
-        divliquid.innerHTML = "" + liquid.value;
+        displayConsistency(liquid);
     }
-    let divpasty = document.querySelector("#divpasty");
+    //let divpasty: HTMLDivElement = <HTMLDivElement>document.querySelector("#divpasty");
     function displayPasty() {
-        console.log(pasty.value);
-        divpasty.innerHTML = "" + pasty.value;
+        displayConsistency(pasty);
     }
-    let divsolid = document.querySelector("#divsolid");
+    //let divsolid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divsolid");
     function displaySolid() {
-        console.log(solid.value);
-        divsolid.innerHTML = "" + solid.value;
+        displayConsistency(solid);
+    }
+    let consistency = document.querySelector("#divconsistency");
+    function displayConsistency(_consistency) {
+        console.log(_consistency.value);
+        consistency.innerHTML = "" + _consistency.value;
     }
     let divcolor = document.querySelector("#divcolor");
     function displayColor() {
         console.log(color.value);
         divcolor.innerHTML = "" + color.value;
+    }
+    async function sendToServer() {
+        let serverURL = "ServerAdresse";
+        serverURL += "/speichern";
+        let formData = new FormData(document.forms[0]);
+        let query = new URLSearchParams(formData);
+        serverURL += "?" + query.toString();
+        //serverURL += "&" + divname.innerHTML;
+        let formular = document.getElementById("hexenkesselForm");
+        formular.reset();
+        window.alert("Daten wurden abgeschickt");
+        await fetch(serverURL);
     }
 })(L04_Hexenkessel || (L04_Hexenkessel = {}));
 //# sourceMappingURL=hexenkessel.js.map
