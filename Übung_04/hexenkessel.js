@@ -4,8 +4,8 @@
 var L04_Hexenkessel;
 (function (L04_Hexenkessel) {
     //import { stderr } from "process";
-    L04_Hexenkessel.generateContent(L04_Hexenkessel.data, L04_Hexenkessel.data2);
     window.addEventListener("load", handleLoad);
+    L04_Hexenkessel.generateContent(L04_Hexenkessel.data, L04_Hexenkessel.data2);
     let name = document.querySelector("#name");
     let description = document.querySelector("#description");
     let kindOfPotion = document.querySelector("#kindOfPotion");

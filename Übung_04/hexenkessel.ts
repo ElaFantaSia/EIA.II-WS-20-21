@@ -6,9 +6,9 @@ namespace L04_Hexenkessel {
     //import { stderr } from "process";
 
     
-    
-    generateContent(data, data2);
     window.addEventListener("load", handleLoad);
+    generateContent(data, data2);
+   
 
     
 
