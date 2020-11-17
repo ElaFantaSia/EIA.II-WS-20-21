@@ -6,7 +6,7 @@ var L06_Hexenkessel;
     console.log("Hallo");
     //import { stderr } from "process";
     window.addEventListener("load", handleLoad);
-    generateContent(data, data2);
+    L06_Hexenkessel.generateContent(L06_Hexenkessel.data, L06_Hexenkessel.data2);
     let name = document.querySelector("#name");
     let description = document.querySelector("#description");
     let kindOfPotion = document.querySelector("#kindOfPotion");

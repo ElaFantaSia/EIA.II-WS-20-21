@@ -1,7 +1,7 @@
 "use strict";
-var L04_Hexenkessel;
-(function (L04_Hexenkessel) {
-    L04_Hexenkessel.data2 = {
+var L06_Hexenkessel;
+(function (L06_Hexenkessel) {
+    L06_Hexenkessel.data2 = {
         Name: [
             { name: "Name" }
         ],
@@ -32,7 +32,7 @@ var L04_Hexenkessel;
             { name: "solid" }
         ]
     };
-    L04_Hexenkessel.data = {
+    L06_Hexenkessel.data = {
         ingredients: [
             { name: "firefly", price: 1 },
             { name: "earwigs", price: 0.4 },
@@ -41,5 +41,5 @@ var L04_Hexenkessel;
             { name: "nosehair", price: 0.3 }
         ]
     };
-})(L04_Hexenkessel || (L04_Hexenkessel = {}));
+})(L06_Hexenkessel || (L06_Hexenkessel = {}));
 //# sourceMappingURL=data.js.map

@@ -1,4 +1,4 @@
-namespace L04_Hexenkessel {
+namespace L06_Hexenkessel {
     export function generateContent(_data1: Data, _data2: Data2): void {
         //console.log(_data);
         generateAdd(_data1);

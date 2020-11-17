@@ -1,4 +1,4 @@
-namespace L04_Hexenkessel {
+namespace L06_Hexenkessel {
 
     export interface Item {
         name: string;

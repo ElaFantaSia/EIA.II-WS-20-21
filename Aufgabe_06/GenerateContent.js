@@ -1,12 +1,12 @@
 "use strict";
-var L04_Hexenkessel;
-(function (L04_Hexenkessel) {
+var L06_Hexenkessel;
+(function (L06_Hexenkessel) {
     function generateContent(_data1, _data2) {
         //console.log(_data);
         generateAdd(_data1);
         generateKindOfPotion(_data2);
     }
-    L04_Hexenkessel.generateContent = generateContent;
+    L06_Hexenkessel.generateContent = generateContent;
     function generateKindOfPotion(_data) {
         for (let category in _data) { //geht alle einzelnen Kategorien durch
             let items = _data[category]; //speichert die aktuelle kategorie mit inhalt in items
@@ -105,5 +105,5 @@ var L04_Hexenkessel;
     /* let input1: HTMLInputElement = <HTMLInputElement>document.createElement("input");
     input1.setAttribute("type", "checkbox");
     document.getElementById("lel")?.appendChild(input1); */
-})(L04_Hexenkessel || (L04_Hexenkessel = {}));
+})(L06_Hexenkessel || (L06_Hexenkessel = {}));
 //# sourceMappingURL=GenerateContent.js.map
