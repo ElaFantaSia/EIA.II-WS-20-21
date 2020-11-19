@@ -7,6 +7,7 @@ var L06_Hexenkessel;
     //import { stderr } from "process";
     window.addEventListener("load", handleLoad);
     L06_Hexenkessel.generateContent(L06_Hexenkessel.data, L06_Hexenkessel.data2);
+    let serverURL = "ServerAdresse";
     let name = document.querySelector("#name");
     let description = document.querySelector("#description");
     let kindOfPotion = document.querySelector("#kindOfPotion");
@@ -23,7 +24,11 @@ var L06_Hexenkessel;
     //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
     let button = document.querySelector("#buttonSent");
     //Event listener hinzufügen an alle input elemente
-    function handleLoad() {
+    async function handleLoad(_event) {
+        console.log("handleLoad");
+        let response = await fetch("Data.json");
+        let offer = await response.text();
+        let data = JSON.parse(offer);
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
         kindOfPotion.addEventListener("click", displayKindOfPotion);
@@ -110,15 +115,16 @@ var L06_Hexenkessel;
         divcolor.innerHTML = "" + color.value;
     }
     async function sendToServer() {
-        let serverURL = "ServerAdresse";
         serverURL += "/speichern";
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
+        let response = await fetch(URL + "?" + query.toString());
+        let responseText = await response.text();
         serverURL += "?" + query.toString();
         //serverURL += "&" + divname.innerHTML;
         let formular = document.getElementById("hexenkesselForm");
         formular.reset();
-        window.alert("Daten wurden abgeschickt");
+        window.alert(responseText);
         await fetch(serverURL);
     }
 })(L06_Hexenkessel || (L06_Hexenkessel = {}));

@@ -2,6 +2,7 @@
 
  //Input Elemente aus HTML in TS Variablen speichern
 namespace L06_Hexenkessel {
+    
     console.log("Hallo");
 
     //import { stderr } from "process";
@@ -9,9 +10,8 @@ namespace L06_Hexenkessel {
     
     window.addEventListener("load", handleLoad);
     generateContent(data, data2);
+    let serverURL: string = "ServerAdresse";
    
-
-    
 
     
     let name: HTMLInputElement = <HTMLInputElement> document.querySelector ("#name");
@@ -32,8 +32,12 @@ namespace L06_Hexenkessel {
 
    
  //Event listener hinzufügen an alle input elemente
-    function handleLoad(): void {
-        
+    async function handleLoad(_event: Event): Promise<void> {
+        console.log("handleLoad");
+
+        let response: Response = await fetch("Data.json");
+        let offer: string = await response.text();
+        let data: Data = JSON.parse(offer);
 
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
@@ -128,17 +132,19 @@ namespace L06_Hexenkessel {
 
 
     async function sendToServer(): Promise <void> {
-        let serverURL: string = "ServerAdresse";
+        
         serverURL += "/speichern";
 
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
+        let response: Response = await fetch(URL + "?" + query.toString());
+        let responseText: string = await response.text();
         serverURL += "?" + query.toString();
 
         //serverURL += "&" + divname.innerHTML;
         let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
         formular.reset();
-        window.alert("Daten wurden abgeschickt"); 
+        window.alert(responseText); 
 
         await fetch(serverURL);
 

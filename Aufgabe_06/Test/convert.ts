@@ -33,6 +33,6 @@ async function sendOrder(_event: Event): Promise<void> {
     console.log("Sent order");
     let formData: FormData = new FormData(form);
     let query: URLSearchParams = new URLSearchParams(<any>formData);
-    await fetch(url + "?" + query.toString());
+    await fetch(URL + "?" + query.toString());
     alert("Order sent!");
 }
