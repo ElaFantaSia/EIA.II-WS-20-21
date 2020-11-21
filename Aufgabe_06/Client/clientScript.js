@@ -20,7 +20,9 @@ var L06_Hexenkessel;
         //let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
         //formular.reset();
         //window.alert(responseText); 
-        console.log(await fetch(serverURL));
+        let response = await fetch(serverURL);
+        let responseText = await response.text();
+        console.log(responseText);
     }
     L06_Hexenkessel.sendToServer = sendToServer;
 })(L06_Hexenkessel || (L06_Hexenkessel = {}));
