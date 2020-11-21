@@ -7,44 +7,67 @@ namespace L06_Hexenkessel {
 
     //import { stderr } from "process";
 
-    
+    let data: Data;
     window.addEventListener("load", handleLoad);
-    generateContent(data, data2);
-    let serverURL: string = "ServerAdresse";
+    
    
 
     
-    let name: HTMLInputElement = <HTMLInputElement> document.querySelector ("#name");
-    let description: HTMLInputElement = <HTMLInputElement> document.querySelector ("#description");
-    let kindOfPotion: HTMLSelectElement = <HTMLSelectElement> document.querySelector ("#kindOfPotion");
-    let duration: HTMLInputElement = <HTMLInputElement> document.querySelector ("#duration");
-    let add: HTMLSelectElement = <HTMLSelectElement> document.querySelector ("#add");
-    let amount: HTMLInputElement = <HTMLInputElement> document.querySelector ("#amount");
-    let heat: HTMLInputElement = <HTMLInputElement> document.querySelector ("#heat");
-    let cool: HTMLInputElement = <HTMLInputElement> document.querySelector ("#cool");
-    let stir: HTMLInputElement = <HTMLInputElement> document.querySelector ("#stir");
-    let liquid: HTMLInputElement = <HTMLInputElement> document.querySelector ("#liquid");
-    let pasty: HTMLInputElement = <HTMLInputElement> document.querySelector ("#pasty");
-    let solid: HTMLInputElement = <HTMLInputElement> document.querySelector ("#solid");
-    let color: HTMLInputElement = <HTMLInputElement> document.querySelector ("#color");
+    let name: HTMLInputElement;
+    let description: HTMLInputElement;
+    let kindOfPotion: HTMLSelectElement;
+    let duration: HTMLInputElement;
+    let add: HTMLSelectElement;
+    let amount: HTMLInputElement;
+    let heat: HTMLInputElement;
+    let cool: HTMLInputElement;
+    let stir: HTMLInputElement;
+    let liquid: HTMLInputElement;
+    let pasty: HTMLInputElement;
+    let solid: HTMLInputElement;
+    let color: HTMLInputElement;
     //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
-    let button: HTMLButtonElement = <HTMLButtonElement> document.querySelector ("#buttonSent");
+    let buttonAddToRecipe: HTMLButtonElement;
+    let buttonAbschicken: HTMLButtonElement;
+    let buttonClearRecipe: HTMLButtonElement;
 
    
  //Event listener hinzufügen an alle input elemente
     async function handleLoad(_event: Event): Promise<void> {
         console.log("handleLoad");
 
-        let response: Response = await fetch("Data.json");
+        let response: Response = await fetch("data.json");
         let offer: string = await response.text();
-        let data: Data = JSON.parse(offer);
+        console.log(offer);
+        data = JSON.parse(offer);
+
+        generateContent(data);
+
+        name = <HTMLInputElement> document.querySelector ("#name");
+        description = <HTMLInputElement> document.querySelector ("#description");
+        kindOfPotion = <HTMLSelectElement> document.querySelector ("#kindOfPotion");
+        duration = <HTMLInputElement> document.querySelector ("#duration");
+        add = <HTMLSelectElement> document.querySelector ("#add");
+        amount = <HTMLInputElement> document.querySelector ("#amount");
+        heat = <HTMLInputElement> document.querySelector ("#heat");
+        cool = <HTMLInputElement> document.querySelector ("#cool");
+        stir = <HTMLInputElement> document.querySelector ("#stir");
+        liquid = <HTMLInputElement> document.querySelector ("#liquid");
+        pasty = <HTMLInputElement> document.querySelector ("#pasty");
+        solid = <HTMLInputElement> document.querySelector ("#solid");
+        color = <HTMLInputElement> document.querySelector ("#color");
+    //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+        buttonAddToRecipe = <HTMLButtonElement> document.querySelector ("#addToRecipe");
+        buttonAbschicken = <HTMLButtonElement> document.querySelector ("#buttonSent");
+        buttonClearRecipe = <HTMLButtonElement> document.querySelector ("#buttonClear");
+        
 
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
         kindOfPotion.addEventListener("click", displayKindOfPotion);
         duration.addEventListener("change", displayDuration);
-        add.addEventListener("click", displayAdd);
-        amount.addEventListener("input", displayAmount);
+        //add.addEventListener("click", displayAdd);
+        //amount.addEventListener("input", displayAmount);
         heat.addEventListener("input", displayHeat);
         cool.addEventListener("input", displayCool);
         stir.addEventListener("change", displayStir);
@@ -52,15 +75,16 @@ namespace L06_Hexenkessel {
         pasty.addEventListener("input", displayPasty);
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
-        button.addEventListener("click", sendToServer);
+        buttonAddToRecipe.addEventListener("click", displayAdd);
+        buttonAbschicken.addEventListener("click", sendToServer); //ACHTUNG!!! Gibt jetzt 2 Buttons; beim 1. möchte ich Wert speichern und zum Server schicken
+        
+        buttonClearRecipe.addEventListener("click", deleteContent);
     }
 
+    
   //Funktinen zum auslesen bei veränderung erstellen
    
     let divname: HTMLDivElement = <HTMLDivElement>document.querySelector("#divname");
-
-
-
     function displayName (): void {
         console.log(name.value);
         divname.innerHTML = "" + name.value;
@@ -82,7 +106,34 @@ namespace L06_Hexenkessel {
         console.log(duration.value);
         divduration.innerHTML = "" + duration.value;
     }
-    let divadd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
+    
+
+    function calculateTotal(): void {
+        //for (/* wie jetzt auf value von Add zugreifen? */) {} ;
+        console.log("calculate...");
+    }
+
+    let divAdd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
+    function displayAdd (): void {
+        console.log(add.value);
+        //divAdd.innerHTML += "" + add.value + "- " + amount.value + " gramm";
+
+        let ingredientsDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
+        ingredientsDiv.innerHTML = "" + add.value + "- " + amount.value + " gramm";
+        let buttonDelete: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
+        buttonDelete.addEventListener("click", deleteIngredients);
+        ingredientsDiv.appendChild(buttonDelete);
+        divAdd.appendChild(ingredientsDiv);
+        //calculateTotal;
+    }
+
+    function deleteIngredients(_event: Event): void {
+        let button: HTMLButtonElement = <HTMLButtonElement>_event.currentTarget;
+        button.parentElement?.remove();
+        console.log("löschen");
+    }
+
+    /* let divadd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
     function displayAdd (): void {
         console.log(add.value);
         divadd.innerHTML = "" + add.value;
@@ -91,7 +142,7 @@ namespace L06_Hexenkessel {
     function displayAmount (): void {
         console.log(amount.value);
         divamount.innerHTML = "" + amount.value;
-    }
+    } */
     let divheat: HTMLDivElement = <HTMLDivElement>document.querySelector("#divheat");
     function displayHeat (): void {
         console.log(heat.value);
@@ -101,7 +152,7 @@ namespace L06_Hexenkessel {
     function displayCool (): void {
         console.log(cool.value);
         divcool.innerHTML = "" + cool.value;
-    }
+    } 
     let divstir: HTMLDivElement = <HTMLDivElement>document.querySelector("#divstir");
     function displayStir (): void {
         console.log(stir.value);
@@ -130,24 +181,30 @@ namespace L06_Hexenkessel {
         divcolor.innerHTML = "" + color.value;
     }  
 
+    //let contentDivOrder:  HTMLDivElement = <HTMLDivElement>document.getElementById("deleteContent");
 
-    async function sendToServer(): Promise <void> {
+    function deleteContent(): void {   //Wie kriege ich den Content vom Div in Parameter-Form zum Übergeben/ wie gelöscht, sodass nur Inhalt gelöscht
+        console.log("deleteContent");
+        divname.innerHTML = "";
+        divdescription.innerHTML = "";
+        divkindOfPotion.innerHTML =  "";
+        divduration.innerHTML = "";
+        divAdd.innerHTML = "";
+        divheat.innerHTML = "";
+        divcool.innerHTML = "";
+        divstir.innerHTML = ""; 
+        consistency.innerHTML = ""; 
+        divcolor.innerHTML = "";
         
-        serverURL += "/speichern";
-
-        let formData: FormData = new FormData(document.forms[0]);
-        let query: URLSearchParams = new URLSearchParams(<any>formData);
-        let response: Response = await fetch(URL + "?" + query.toString());
-        let responseText: string = await response.text();
-        serverURL += "?" + query.toString();
-
-        //serverURL += "&" + divname.innerHTML;
-        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
-        formular.reset();
-        window.alert(responseText); 
-
-        await fetch(serverURL);
-
+        //delete.deleteContent;
+        /* for (let category in contentDivOrder) {
+            //if (category == "")
+            console.log(category);
+        //else if (delete.contentDivOrder);
+        } */
     }
+
+
+    
 }
 

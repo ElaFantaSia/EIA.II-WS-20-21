@@ -1,40 +1,32 @@
-namespace L06_Hexenkessel {
+/* namespace L06_Hexenkessel { */
 
-    export interface Item {
+    /* export interface Item {
         name: string;
         price: number;
-    }
-    export interface Auswahl {
+    } */
+    /* export interface Auswahl {
         name: string;
-    }
+    } */
 
-    export interface Data {
+    /* export interface Data {
         [category: string]: Item[];
-    }
-    export interface Data2 {
+    } */
+    /* export interface Data2 {
         [category2: string]: Auswahl[];
-    }
+    } */
 
-    export let data2: Data2 = {
-        Name: [
+    //export let data2: Data2 = {
+        /* Name: [
             {name: "Name"}
         ],
 
         description: [
             {name: "Description, riscs, side effects"}
-        ],
+        ], */
 
-        kindOfPotion: [
-            {name: "Choose wanted effect:"},
-            {name: "Love potion"},
-            {name: "Forever young potion"},
-            {name: "Healing potion"},
-            {name: "Concentration potion"},
-            {name: "Poisoning potion"},
-            {name: "Klo potion"}
-        ],
+        
 
-        amount: [
+        /* amount: [
             {name: "Amount in gramm"}
         ],
 
@@ -50,10 +42,10 @@ namespace L06_Hexenkessel {
             {name: "Liquid"},
             {name: "pasty"},
             {name: "solid"}
-        ]
-    };
+        ] */
+    //};
 
-    export let data: Data = {
+    /* export let data: Data = {
 
         ingredients: [
             {name: "firefly", price: 1},
@@ -62,9 +54,9 @@ namespace L06_Hexenkessel {
             {name: "fairy", price: 1.9},
             {name: "nosehair", price: 0.3}
         ]
-    };
+    }; */
 
     
     
 
-}
+//}

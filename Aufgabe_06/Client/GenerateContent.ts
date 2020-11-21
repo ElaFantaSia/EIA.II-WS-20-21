@@ -1,17 +1,27 @@
 namespace L06_Hexenkessel {
-    export function generateContent(_data1: Data, _data2: Data2): void {
+
+    export interface Item {
+        name: string;
+        price: number;
+    }
+
+    export interface Data {
+        [category: string]: Item[];
+    }
+
+    export function generateContent(_data: Data): void {
         //console.log(_data);
-        generateAdd(_data1);
-        generateKindOfPotion(_data2);
+        generateAdd(_data);
+        generateKindOfPotion(_data);
         
     }
 
     
 
-    function generateKindOfPotion(_data: Data2): void {
+    function generateKindOfPotion(_data: Data): void {
 
         for (let category in _data) { //geht alle einzelnen Kategorien durch
-            let items: Auswahl[] = _data[category]; //speichert die aktuelle kategorie mit inhalt in items
+            let items: Item[] = _data[category]; //speichert die aktuelle kategorie mit inhalt in items
 
             if (category == "kindOfPotion") 
                 createSelectAuswahl(items);
@@ -47,7 +57,7 @@ namespace L06_Hexenkessel {
         select1.appendChild(option6);  */ 
     }
 
-    function createSelectAuswahl(_items: Auswahl[]): HTMLSelectElement {
+    function createSelectAuswahl(_items: Item[]): HTMLSelectElement {
 
         let select1: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
         select1.setAttribute("id", "kindOfPotion");
@@ -78,7 +88,7 @@ namespace L06_Hexenkessel {
         for (let category in _data) {
             let items: Item[] = _data[category];
 
-            /* if (category == "kindOfPotion") */
+            if (category == "ingredients")
             createSelectIngredients(items);
     
         }

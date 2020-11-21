@@ -5,36 +5,56 @@ var L06_Hexenkessel;
 (function (L06_Hexenkessel) {
     console.log("Hallo");
     //import { stderr } from "process";
+    let data;
     window.addEventListener("load", handleLoad);
-    L06_Hexenkessel.generateContent(L06_Hexenkessel.data, L06_Hexenkessel.data2);
-    let serverURL = "ServerAdresse";
-    let name = document.querySelector("#name");
-    let description = document.querySelector("#description");
-    let kindOfPotion = document.querySelector("#kindOfPotion");
-    let duration = document.querySelector("#duration");
-    let add = document.querySelector("#add");
-    let amount = document.querySelector("#amount");
-    let heat = document.querySelector("#heat");
-    let cool = document.querySelector("#cool");
-    let stir = document.querySelector("#stir");
-    let liquid = document.querySelector("#liquid");
-    let pasty = document.querySelector("#pasty");
-    let solid = document.querySelector("#solid");
-    let color = document.querySelector("#color");
+    let name;
+    let description;
+    let kindOfPotion;
+    let duration;
+    let add;
+    let amount;
+    let heat;
+    let cool;
+    let stir;
+    let liquid;
+    let pasty;
+    let solid;
+    let color;
     //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
-    let button = document.querySelector("#buttonSent");
+    let buttonAddToRecipe;
+    let buttonAbschicken;
+    let buttonClearRecipe;
     //Event listener hinzufügen an alle input elemente
     async function handleLoad(_event) {
         console.log("handleLoad");
-        let response = await fetch("Data.json");
+        let response = await fetch("data.json");
         let offer = await response.text();
-        let data = JSON.parse(offer);
+        console.log(offer);
+        data = JSON.parse(offer);
+        L06_Hexenkessel.generateContent(data);
+        name = document.querySelector("#name");
+        description = document.querySelector("#description");
+        kindOfPotion = document.querySelector("#kindOfPotion");
+        duration = document.querySelector("#duration");
+        add = document.querySelector("#add");
+        amount = document.querySelector("#amount");
+        heat = document.querySelector("#heat");
+        cool = document.querySelector("#cool");
+        stir = document.querySelector("#stir");
+        liquid = document.querySelector("#liquid");
+        pasty = document.querySelector("#pasty");
+        solid = document.querySelector("#solid");
+        color = document.querySelector("#color");
+        //let recipe: HTMLDivElement = <HTMLDivElement> document.querySelector ("#recipe");
+        buttonAddToRecipe = document.querySelector("#addToRecipe");
+        buttonAbschicken = document.querySelector("#buttonSent");
+        buttonClearRecipe = document.querySelector("#buttonClear");
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
         kindOfPotion.addEventListener("click", displayKindOfPotion);
         duration.addEventListener("change", displayDuration);
-        add.addEventListener("click", displayAdd);
-        amount.addEventListener("input", displayAmount);
+        //add.addEventListener("click", displayAdd);
+        //amount.addEventListener("input", displayAmount);
         heat.addEventListener("input", displayHeat);
         cool.addEventListener("input", displayCool);
         stir.addEventListener("change", displayStir);
@@ -42,7 +62,9 @@ var L06_Hexenkessel;
         pasty.addEventListener("input", displayPasty);
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
-        button.addEventListener("click", sendToServer);
+        buttonAddToRecipe.addEventListener("click", displayAdd);
+        buttonAbschicken.addEventListener("click", L06_Hexenkessel.sendToServer); //ACHTUNG!!! Gibt jetzt 2 Buttons; beim 1. möchte ich Wert speichern und zum Server schicken
+        buttonClearRecipe.addEventListener("click", deleteContent);
     }
     //Funktinen zum auslesen bei veränderung erstellen
     let divname = document.querySelector("#divname");
@@ -67,16 +89,37 @@ var L06_Hexenkessel;
         console.log(duration.value);
         divduration.innerHTML = "" + duration.value;
     }
-    let divadd = document.querySelector("#divadd");
+    function calculateTotal() {
+        //for (/* wie jetzt auf value von Add zugreifen? */) {} ;
+        console.log("calculate...");
+    }
+    let divAdd = document.querySelector("#divadd");
     function displayAdd() {
+        console.log(add.value);
+        //divAdd.innerHTML += "" + add.value + "- " + amount.value + " gramm";
+        let ingredientsDiv = document.createElement("div");
+        ingredientsDiv.innerHTML = "" + add.value + "- " + amount.value + " gramm";
+        let buttonDelete = document.createElement("button");
+        buttonDelete.addEventListener("click", deleteIngredients);
+        ingredientsDiv.appendChild(buttonDelete);
+        divAdd.appendChild(ingredientsDiv);
+        //calculateTotal;
+    }
+    function deleteIngredients(_event) {
+        let button = _event.currentTarget;
+        button.parentElement?.remove();
+        console.log("löschen");
+    }
+    /* let divadd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
+    function displayAdd (): void {
         console.log(add.value);
         divadd.innerHTML = "" + add.value;
     }
-    let divamount = document.querySelector("#divamount");
-    function displayAmount() {
+    let divamount: HTMLDivElement = <HTMLDivElement>document.querySelector("#divamount");
+    function displayAmount (): void {
         console.log(amount.value);
         divamount.innerHTML = "" + amount.value;
-    }
+    } */
     let divheat = document.querySelector("#divheat");
     function displayHeat() {
         console.log(heat.value);
@@ -114,18 +157,25 @@ var L06_Hexenkessel;
         console.log(color.value);
         divcolor.innerHTML = "" + color.value;
     }
-    async function sendToServer() {
-        serverURL += "/speichern";
-        let formData = new FormData(document.forms[0]);
-        let query = new URLSearchParams(formData);
-        let response = await fetch(URL + "?" + query.toString());
-        let responseText = await response.text();
-        serverURL += "?" + query.toString();
-        //serverURL += "&" + divname.innerHTML;
-        let formular = document.getElementById("hexenkesselForm");
-        formular.reset();
-        window.alert(responseText);
-        await fetch(serverURL);
+    //let contentDivOrder:  HTMLDivElement = <HTMLDivElement>document.getElementById("deleteContent");
+    function deleteContent() {
+        console.log("deleteContent");
+        divname.innerHTML = "";
+        divdescription.innerHTML = "";
+        divkindOfPotion.innerHTML = "";
+        divduration.innerHTML = "";
+        divAdd.innerHTML = "";
+        divheat.innerHTML = "";
+        divcool.innerHTML = "";
+        divstir.innerHTML = "";
+        consistency.innerHTML = "";
+        divcolor.innerHTML = "";
+        //delete.deleteContent;
+        /* for (let category in contentDivOrder) {
+            //if (category == "")
+            console.log(category);
+        //else if (delete.contentDivOrder);
+        } */
     }
 })(L06_Hexenkessel || (L06_Hexenkessel = {}));
 //# sourceMappingURL=hexenkessel.js.map

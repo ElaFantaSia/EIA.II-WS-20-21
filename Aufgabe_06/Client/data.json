@@ -1,0 +1,19 @@
+{
+    "kindOfPotion": [
+        {"name": "Choose wanted effect:", "price": 0},
+        {"name": "Love potion", "price": 0},
+        {"name": "Forever young potion", "price": 0},
+        {"name": "Healing potion", "price": 0},
+        {"name": "Concentration potion", "price": 0},
+        {"name": "Poisoning potion", "price": 0},
+        {"name": "Klo potion", "price": 0}
+    ], 
+
+    "ingredients": [
+        {"name": "firefly", "price": 1},
+        {"name": "earwigs", "price": 0.4},
+        {"name": "lizard", "price": 0.5},
+        {"name": "fairy", "price": 1.9},
+        {"name": "nosehair", "price": 0.3}
+    ]
+}

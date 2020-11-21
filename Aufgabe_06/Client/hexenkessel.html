@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="hexenkessel.css" type="text/css" media="screen" />
     <script src="data.js" defer></script>
     <script src="GenerateContent.js" defer></script>
+    <script src="clientScript.js" defer></script>
 	<script src="hexenkessel.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
@@ -63,8 +64,12 @@
                 <option price="1.9" name="fairy" value="fairy" >Fairy dust</option>
                 <option price="0.3" name="nosehair" value="nosehair" >Nosehair</option>
                 </select> -->
-                <div id="divForselect2">
+                <div>
+                    <div id="divForselect2">
+
+                    </div>
                     <input type="text" name="amount" id="amount" placeholder="amount in gramm"> 
+                    <button type="button" id="addToRecipe">Add to recipe</button> 
                 </div>
             
                 
@@ -99,14 +104,14 @@
          
     </form>
 
-    <div>
+    <div id="deleteContent">
         <h2>Your recipe:</h2>
         <div>Name: <div id="divname"></div></div>
         <div>Description:  <div id="divdescription"></div></div>
         <div>Kind of potion: <div id="divkindOfPotion"></div></div>
         <div>Duration: <div id="divduration"></div></div>
         <div>Add: <div id="divadd"></div></div>
-        <div>Amount: <div id="divamount"></div></div>
+        <!-- <div>Amount: <div id="divamount"></div></div> -->
         <div>Heat to: <div id="divheat"></div></div>
         <div>Cool down to: <div id="divcool"></div></div>
         <div>Stir: <div id="divstir"></div></div>
@@ -116,10 +121,12 @@
         <div>Consistency: <div id="divconsistency"></div></div>
         <div>color: <div id="divcolor"></div></div>
         
+        
 
         <div id="recipe">
          <p>Total:</p>   
         </div>
+        <button type="submit" id="buttonClear">Clear recipe</button> 
         <button type="submit" id="buttonSent">Abschicken</button>  
     </div>
     

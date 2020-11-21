@@ -1,10 +1,10 @@
 "use strict";
 var L06_Hexenkessel;
 (function (L06_Hexenkessel) {
-    function generateContent(_data1, _data2) {
+    function generateContent(_data) {
         //console.log(_data);
-        generateAdd(_data1);
-        generateKindOfPotion(_data2);
+        generateAdd(_data);
+        generateKindOfPotion(_data);
     }
     L06_Hexenkessel.generateContent = generateContent;
     function generateKindOfPotion(_data) {
@@ -58,8 +58,8 @@ var L06_Hexenkessel;
     function generateAdd(_data) {
         for (let category in _data) {
             let items = _data[category];
-            /* if (category == "kindOfPotion") */
-            createSelectIngredients(items);
+            if (category == "ingredients")
+                createSelectIngredients(items);
         }
         /* let select2: HTMLSelectElement = <HTMLSelectElement>document.createElement("select");
         select2.setAttribute("id", "add");
