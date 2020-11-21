@@ -76,7 +76,7 @@ namespace L06_Hexenkessel {
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
-        buttonAbschicken.addEventListener("click", sendToServer); //ACHTUNG!!! Gibt jetzt 2 Buttons; beim 1. möchte ich Wert speichern und zum Server schicken
+        buttonAbschicken.addEventListener("click", sendToServer); 
         
         buttonClearRecipe.addEventListener("click", deleteContent);
     }

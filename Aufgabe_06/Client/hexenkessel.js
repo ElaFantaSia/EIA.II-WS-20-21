@@ -63,7 +63,7 @@ var L06_Hexenkessel;
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
-        buttonAbschicken.addEventListener("click", L06_Hexenkessel.sendToServer); //ACHTUNG!!! Gibt jetzt 2 Buttons; beim 1. möchte ich Wert speichern und zum Server schicken
+        buttonAbschicken.addEventListener("click", L06_Hexenkessel.sendToServer);
         buttonClearRecipe.addEventListener("click", deleteContent);
     }
     //Funktinen zum auslesen bei veränderung erstellen

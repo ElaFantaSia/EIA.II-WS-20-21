@@ -2,6 +2,9 @@ import * as Http from "http";
 import * as Url from "url";
 
 export namespace L06_Hexenkessel {
+
+
+
     let server: Http.Server = Http.createServer();
     console.log(server);
 
