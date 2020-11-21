@@ -3,7 +3,7 @@ var L06_Hexenkessel;
 (function (L06_Hexenkessel) {
     let serverURL = "https://ela-ela.herokuapp.com/";
     async function sendToServer() {
-        serverURL += "/speichern";
+        //serverURL += "/speichern";
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
         //let response: Response = await fetch(URL + "?" + query.toString());
@@ -20,7 +20,7 @@ var L06_Hexenkessel;
         //let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
         //formular.reset();
         //window.alert(responseText); 
-        await fetch(serverURL);
+        console.log(await fetch(serverURL));
     }
     L06_Hexenkessel.sendToServer = sendToServer;
 })(L06_Hexenkessel || (L06_Hexenkessel = {}));

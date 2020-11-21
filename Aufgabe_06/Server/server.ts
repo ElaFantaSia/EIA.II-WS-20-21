@@ -28,8 +28,8 @@ export namespace L06_Hexenkessel {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             console.log(url.query);
-            let jsonString: string = JSON.stringify(url.query);
-            _response.write(jsonString);
+            //let jsonString: string = JSON.stringify(url.query);
+            //_response.write(jsonString);
             
             for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "</br>");

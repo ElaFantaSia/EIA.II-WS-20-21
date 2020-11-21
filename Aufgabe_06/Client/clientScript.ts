@@ -4,7 +4,7 @@ namespace L06_Hexenkessel {
 
     export async function sendToServer(): Promise <void> {
         
-        serverURL += "/speichern";
+        //serverURL += "/speichern";
 
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
@@ -24,7 +24,9 @@ namespace L06_Hexenkessel {
         //formular.reset();
         //window.alert(responseText); 
 
-        await fetch(serverURL);
+        
+
+        console.log(await fetch(serverURL));
 
     }
 }
