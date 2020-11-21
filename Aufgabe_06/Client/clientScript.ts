@@ -9,10 +9,10 @@ namespace L06_Hexenkessel {
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         //let response: Response = await fetch(URL + "?" + query.toString());
-        console.log(URL);
+        //console.log(URL);
         //let responseText: string = await response.text();
         serverURL += "?" + query.toString();
-        console.log(serverURL);
+        //console.log(serverURL);
         /* let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let response: Response = await fetch(URL + "?" + query.toString());
