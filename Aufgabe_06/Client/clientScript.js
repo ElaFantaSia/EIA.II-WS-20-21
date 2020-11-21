@@ -23,6 +23,7 @@ var L06_Hexenkessel;
         let response = await fetch(serverURL);
         let responseText = await response.text();
         console.log(responseText);
+        alert(responseText);
     }
     L06_Hexenkessel.sendToServer = sendToServer;
 })(L06_Hexenkessel || (L06_Hexenkessel = {}));

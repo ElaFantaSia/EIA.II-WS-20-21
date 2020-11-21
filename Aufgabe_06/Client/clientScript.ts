@@ -28,9 +28,10 @@ namespace L06_Hexenkessel {
 
        
         let response: Response =  await fetch(serverURL);
-        
+
         let responseText: string = await response.text();
         console.log(responseText);
+        alert(responseText);
 
     }
 }
