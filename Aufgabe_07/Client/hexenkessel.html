@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexenkessel</title>
+    <link rel="stylesheet" href="hexenkessel.css" type="text/css" media="screen" />
+    <script src="data.js" defer></script>
+    <script src="GenerateContent.js" defer></script>
+    <script src="clientScript.js" defer></script>
+	<script src="hexenkessel.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <header id="lel">
+        <h1>Magic Cauldron - Recipe</h1>
+        <p>Choose and type in before boiling</p>
+    </header>
+
+    <form method="GET" action="" id="hexenkesselForm">
+        <div id="form">
+            <h2>Type in / Choose here:</h2>
+            <fieldset>
+                <legend>Name</legend>
+                <input type="text" name="Name" id="name" placeholder="Type in potions name">        
+            </fieldset>
+
+            <fieldset>
+                <legend>Description, riscs, side effects</legend>
+                <textarea type="textarea" name="description" id="description" placeholder="Type in here"></textarea>
+            </fieldset>
+
+            <fieldset id="fieldsetForselect1">
+                <legend>Kind of potion</legend>                              
+                <!-- <select name="Kind of potion" id="kindOfPotion">
+                    <option value="" name="vorab1"disabled selected >Choose wanted effects</option>
+                    <option value="Love potion" name="love">Love potion</option>
+                    <option value="Forever young potion" name="young">Forever young potion</option>
+                    <option value="Healing potion" name="heal">Healing potion</option>
+                    <option value="Concentration potion" name="cencent">Concentration Potion</option>
+                    <option value="Poisoning potion" name="poisn">Poisoning Potion</option>
+                </select> -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Duration to full effect</legend>
+                <span id ="sliderDuration">
+                    <span>1 minute
+                        <input type="range" name="Duration" id="duration" min="1" max="120" step="1" value="1">
+                        
+                        120 minutes
+                    </span>
+                    <!-- <span><progress max="1" value="1" ></progress></span> -->
+                </span>
+            </fieldset>
+
+            <fieldset id="fieldsetForselect2">
+                <legend>Instructions</legend>
+                <!-- <select name="Add" id="add">   
+                <option value="" name="vorab" disabled selected >Add</option>
+                <option price="1" name="firefly" value="firefly">Fireflywings</option>
+                <option price="0.4" name="earwigs" value="earwigs" >Earwigs</option>
+                <option price="0.5" name="lizard" value="lizard" >Lizard blood</option>
+                <option price="1.9" name="fairy" value="fairy" >Fairy dust</option>
+                <option price="0.3" name="nosehair" value="nosehair" >Nosehair</option>
+                </select> -->
+                <div>
+                    <div id="divForselect2">
+
+                    </div>
+                    <input type="text" name="amount" id="amount" placeholder="amount in gramm"> 
+                    <button type="button" id="addToRecipe">Add to recipe</button> 
+                </div>
+            
+                
+                <p>Heat to</p><input type="text" name="heat" id="heat" placeholder=°C>  
+                <p>Cool down to</p><input type="text" name="cool" id="cool" placeholder=°C>  
+                <br>
+                <span id ="sliderStir">
+                    <span>Stir softly
+                        <input type="range" name="stir" id="stir" min="1" max="10" step="1" value="1">
+                        forcefully
+                    </span>
+                </span>
+                    <br>
+
+                <input type="radio" name="consist" id="liquid" value="liquid">
+                <label for="liquid">Liquid</label>
+                <input type="radio" name="consist" id="pasty" value="pasty">
+                <label for="pasty">Pasty</label>
+                <input type="radio" name="consist" id="solid" value="solid">
+                <label for="solid">Solid</label>
+
+
+                <input type="color" name="color" id="color">
+
+                <!--<legend>Colors</legend>        
+                <input type="checkbox" name="Colors" id="white" value="White">
+                <label for="white">White</label>
+                <input type="checkbox" name="Colors" id="black" value="Black">
+                <label for="black">Black</label> -->
+            </fieldset>
+        </div>
+         
+    </form>
+
+    <div id="deleteContent">
+        <h2>Your recipe:</h2>
+        <div>Name: <div id="divname"></div></div>
+        <div>Description:  <div id="divdescription"></div></div>
+        <div>Kind of potion: <div id="divkindOfPotion"></div></div>
+        <div>Duration: <div id="divduration"></div></div>
+        <div>Add: <div id="divadd"></div></div>
+        <!-- <div>Amount: <div id="divamount"></div></div> -->
+        <div>Heat to: <div id="divheat"></div></div>
+        <div>Cool down to: <div id="divcool"></div></div>
+        <div>Stir: <div id="divstir"></div></div>
+        <!-- <div>liquid: <div id="divliquid"></div></div>
+        <div>pasty: <div id="divpasty"></div></div>
+        <div>solid: <div id="divsolid"></div></div> -->
+        <div>Consistency: <div id="divconsistency"></div></div>
+        <div>color: <div id="divcolor"></div></div>
+        
+        
+
+        <div id="recipe">
+         <p>Total:</p>   
+        </div>
+        <button type="submit" id="buttonClear">Clear recipe</button> 
+        <button type="submit" id="buttonSent">Send recipe</button>  
+    </div>
+    
+</body>
+</html>
