@@ -1,6 +1,6 @@
 "use strict";
-var L06_Hexenkessel;
-(function (L06_Hexenkessel) {
+var L07_Hexenkessel;
+(function (L07_Hexenkessel) {
     let serverURL = "https://ela-ela.herokuapp.com/";
     async function sendToServer() {
         //serverURL += "/speichern";
@@ -25,6 +25,6 @@ var L06_Hexenkessel;
         console.log(responseText);
         alert(responseText);
     }
-    L06_Hexenkessel.sendToServer = sendToServer;
-})(L06_Hexenkessel || (L06_Hexenkessel = {}));
+    L07_Hexenkessel.sendToServer = sendToServer;
+})(L07_Hexenkessel || (L07_Hexenkessel = {}));
 //# sourceMappingURL=clientScript.js.map

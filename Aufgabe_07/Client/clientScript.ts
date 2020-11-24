@@ -1,4 +1,4 @@
-namespace L06_Hexenkessel { 
+namespace L07_Hexenkessel { 
 
     let serverURL: string = "https://ela-ela.herokuapp.com/";
 

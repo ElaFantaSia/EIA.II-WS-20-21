@@ -1,7 +1,7 @@
 //import { URLSearchParams } from "url";
 
  //Input Elemente aus HTML in TS Variablen speichern
-namespace L06_Hexenkessel {
+namespace L07_Hexenkessel {
     
     console.log("Hallo");
 

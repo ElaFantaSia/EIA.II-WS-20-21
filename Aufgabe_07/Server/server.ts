@@ -1,21 +1,40 @@
 import * as Http from "http";
 import * as Url from "url";
+import * as Mongo from "mongod";
 
-export namespace L06_Hexenkessel {
+export namespace L07_Hexenkessel {
+    interface Order {
+        [type: string]: string | string[];
+    }
 
-
-
-    let server: Http.Server = Http.createServer();
-    console.log(server);
+    let orders: Mongo.Collection;
 
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
         port = 5001;
 
-    console.log("Server starting on: " + port);
+    let databaseURL: string =  "mongodb://localhost:27017";
 
-    server.listen(port);
-    server.addListener("request", handleRequest);
+    startServer(port);
+    connectToDatabase(databaseURL); 
+
+    function startServer(_port: number | string): void {
+        let server: Http.Server = Http.createServer();
+        //console.log(server);
+        console.log("Server starting on: " + _port);
+
+        server.listen(_port);
+        server.addListener("request", handleRequest);
+    }
+
+    async function connectToDatabase(_url: string): Promise<void> {
+        let options: Mongo.MongoClientOptions = {useNewUrlParser, true, useUnifiedTopology: true};
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        orders = mongoClient.db("Hexenkessel").collection("Orders"); 
+    }
+ 
+    
 
     //function handleRequest(): void {
     //    console.log("Whats up?");
@@ -30,15 +49,16 @@ export namespace L06_Hexenkessel {
         
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            console.log(url.query);
-            let jsonString: string = JSON.stringify(url.query);
-            _response.write(jsonString);
-            
-            /* for (let key in url.query) {
+             for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "</br>");
           
-            } */
-            
+            } 
+            console.log(url.query);
+
+            let order: Order = JSON.stringify(url.query);
+            _response.write(url.query);
+
+            storeOrder(order);
         }  
 
         _response.end();
@@ -61,5 +81,7 @@ export namespace L06_Hexenkessel {
         _response.write("This is my response");
          */
     } 
-    
+    function storeOrder(_order: Order): void {
+        orders.insert(_order); 
+    }
 }
