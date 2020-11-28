@@ -11,7 +11,7 @@ export namespace L07_Hexenkessel {
 
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
-        port = 5001;
+        port = 5501;
 
     //let databaseURL: string =  "mongodb://localhost:27017";
     let databaseURL: string =  "mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority";
@@ -45,8 +45,9 @@ export namespace L07_Hexenkessel {
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         console.log(_request.url);
 
-        _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        
 
         
         if (_request.url) {
