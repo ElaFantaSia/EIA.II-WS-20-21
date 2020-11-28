@@ -1,18 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.L06_Hexenkessel = void 0;
+exports.L07_Hexenkessel = void 0;
 const Http = require("http");
 const Url = require("url");
-var L06_Hexenkessel;
-(function (L06_Hexenkessel) {
-    let server = Http.createServer();
-    console.log(server);
+const Mongo = require("mongodb");
+var L07_Hexenkessel;
+(function (L07_Hexenkessel) {
+    let orders;
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;
-    console.log("Server starting on: " + port);
-    server.listen(port);
-    server.addListener("request", handleRequest);
+    //let databaseURL: string =  "mongodb://localhost:27017";
+    let databaseURL = "mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
+    startServer(port);
+    connectToDatabase(databaseURL);
+    function startServer(_port) {
+        let server = Http.createServer();
+        //console.log(server);
+        console.log("Server starting on: " + _port);
+        server.listen(_port);
+        server.addListener("request", handleRequest);
+    }
+    async function connectToDatabase(_url) {
+        let options = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        orders = mongoClient.db("Hexenkessel").collection("Orders");
+    }
     //function handleRequest(): void {
     //    console.log("Whats up?");
     //}
@@ -22,13 +37,13 @@ var L06_Hexenkessel;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
+            for (let key in url.query) {
+                _response.write(key + ":" + url.query[key] + "</br>");
+            }
             console.log(url.query);
             let jsonString = JSON.stringify(url.query);
             _response.write(jsonString);
-            /* for (let key in url.query) {
-                _response.write(key + ":" + url.query[key] + "</br>");
-          
-            } */
+            storeOrder(url.query);
         }
         _response.end();
         /* if (_request.url) {
@@ -49,5 +64,9 @@ var L06_Hexenkessel;
         _response.write("This is my response");
          */
     }
-})(L06_Hexenkessel = exports.L06_Hexenkessel || (exports.L06_Hexenkessel = {}));
+    function storeOrder(_order) {
+        orders.insert(_order);
+    }
+})(L07_Hexenkessel = exports.L07_Hexenkessel || (exports.L07_Hexenkessel = {}));
+/* abc123 x2 MyMongoDBUser */ 
 //# sourceMappingURL=server.js.map

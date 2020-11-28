@@ -1,10 +1,10 @@
 import * as Http from "http";
 import * as Url from "url";
-import * as Mongo from "mongod";
+import * as Mongo from "mongodb";
 
 export namespace L07_Hexenkessel {
     interface Order {
-        [type: string]: string | string[];
+        [type: string]: string | string[] | undefined;
     }
 
     let orders: Mongo.Collection;
@@ -13,7 +13,9 @@ export namespace L07_Hexenkessel {
     if (port == undefined)
         port = 5001;
 
-    let databaseURL: string =  "mongodb://localhost:27017";
+    //let databaseURL: string =  "mongodb://localhost:27017";
+    let databaseURL: string =  "mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
 
     startServer(port);
     connectToDatabase(databaseURL); 
@@ -28,7 +30,7 @@ export namespace L07_Hexenkessel {
     }
 
     async function connectToDatabase(_url: string): Promise<void> {
-        let options: Mongo.MongoClientOptions = {useNewUrlParser, true, useUnifiedTopology: true};
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("Hexenkessel").collection("Orders"); 
@@ -49,16 +51,16 @@ export namespace L07_Hexenkessel {
         
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-             for (let key in url.query) {
+            for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "</br>");
           
             } 
             console.log(url.query);
 
-            let order: Order = JSON.stringify(url.query);
-            _response.write(url.query);
+            let jsonString: string = JSON.stringify(url.query);
+            _response.write(jsonString);
 
-            storeOrder(order);
+            storeOrder(url.query);
         }  
 
         _response.end();
@@ -85,3 +87,8 @@ export namespace L07_Hexenkessel {
         orders.insert(_order); 
     }
 }
+
+
+
+
+/* abc123 x2 MyMongoDBUser */

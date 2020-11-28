@@ -1,8 +1,8 @@
 "use strict";
 //import { URLSearchParams } from "url";
 //Input Elemente aus HTML in TS Variablen speichern
-var L06_Hexenkessel;
-(function (L06_Hexenkessel) {
+var L07_Hexenkessel;
+(function (L07_Hexenkessel) {
     console.log("Hallo");
     //import { stderr } from "process";
     let data;
@@ -31,7 +31,7 @@ var L06_Hexenkessel;
         let offer = await response.text();
         console.log(offer);
         data = JSON.parse(offer);
-        L06_Hexenkessel.generateContent(data);
+        L07_Hexenkessel.generateContent(data);
         name = document.querySelector("#name");
         description = document.querySelector("#description");
         kindOfPotion = document.querySelector("#kindOfPotion");
@@ -63,7 +63,7 @@ var L06_Hexenkessel;
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
-        buttonAbschicken.addEventListener("click", L06_Hexenkessel.sendToServer);
+        buttonAbschicken.addEventListener("click", L07_Hexenkessel.sendToServer);
         buttonClearRecipe.addEventListener("click", deleteContent);
     }
     //Funktinen zum auslesen bei veränderung erstellen
@@ -177,5 +177,5 @@ var L06_Hexenkessel;
         //else if (delete.contentDivOrder);
         } */
     }
-})(L06_Hexenkessel || (L06_Hexenkessel = {}));
+})(L07_Hexenkessel || (L07_Hexenkessel = {}));
 //# sourceMappingURL=hexenkessel.js.map
