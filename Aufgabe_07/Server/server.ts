@@ -14,7 +14,7 @@ export namespace L07_Hexenkessel {
         port = 5501;
 
     //let databaseURL: string =  "mongodb://localhost:27017";
-    let databaseURL: string =  "mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    let databaseURL: string =  "mongodb+srv://MyMongoDBUser:<abc123abc123>@cluster0.bscp6.mongodb.net/<Hexenkessel>?retryWrites=true&w=majority";
     //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
 
     startServer(port);

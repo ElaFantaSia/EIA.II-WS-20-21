@@ -11,7 +11,7 @@ var L07_Hexenkessel;
     if (port == undefined)
         port = 5501;
     //let databaseURL: string =  "mongodb://localhost:27017";
-    let databaseURL = "mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    let databaseURL = "mongodb+srv://MyMongoDBUser:<abc123abc123>@cluster0.bscp6.mongodb.net/<Hexenkessel>?retryWrites=true&w=majority";
     //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
     startServer(port);
     connectToDatabase(databaseURL);
