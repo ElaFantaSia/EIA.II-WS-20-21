@@ -1,9 +1,10 @@
 "use strict";
 var L07_Hexenkessel;
 (function (L07_Hexenkessel) {
-    let serverURL = "https://ela-ela.herokuapp.com";
+    let serverURL;
     async function sendToServer() {
         //serverURL += "/speichern";
+        serverURL = "https://ela-ela.herokuapp.com";
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
         //let response: Response = await fetch(URL + "?" + query.toString());
@@ -30,6 +31,7 @@ var L07_Hexenkessel;
     }
     L07_Hexenkessel.sendToServer = sendToServer;
     async function getFromServer() {
+        serverURL = "https://ela-ela.herokuapp.com";
         serverURL += "/get";
         let response = await fetch(serverURL);
         let responseText = await response.text();

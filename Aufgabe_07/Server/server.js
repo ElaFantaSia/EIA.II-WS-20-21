@@ -52,11 +52,13 @@ var L07_Hexenkessel;
                     if (err)
                         throw err;
                     let resultString = "";
+                    resultString += "[";
                     for (let i = 0; i < result.length; i++) {
                         resultString += JSON.stringify(result[i]);
                         if (i != result.length - 1)
                             resultString += ",";
                     }
+                    resultString += "]";
                     _response.write(JSON.stringify(resultString));
                 });
             }
