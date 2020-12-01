@@ -66,6 +66,24 @@ export namespace L07_Hexenkessel {
     
                 storeOrder(url.query);
             }
+            else if (path == "get") {
+                orders.find({}).toArray(function (err: Mongo.MongoError, result: string[]): void {
+
+                    if (err)
+                        throw err;
+
+                    let resultString: string = "";
+                    for (let i: number = 0; i < result.length; i++) {
+                        resultString += JSON.stringify(result[i]);
+                        if (i != result.length - 1)
+                            resultString += ",";
+                    }
+                    _response.write(JSON.stringify(resultString));
+
+
+
+                });
+            }
             
         }  
 

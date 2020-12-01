@@ -47,6 +47,19 @@ var L07_Hexenkessel;
                 _response.write(jsonString);
                 storeOrder(url.query);
             }
+            else if (path == "get") {
+                orders.find({}).toArray(function (err, result) {
+                    if (err)
+                        throw err;
+                    let resultString = "";
+                    for (let i = 0; i < result.length; i++) {
+                        resultString += JSON.stringify(result[i]);
+                        if (i != result.length - 1)
+                            resultString += ",";
+                    }
+                    _response.write(JSON.stringify(resultString));
+                });
+            }
         }
         _response.end();
         /* if (_request.url) {

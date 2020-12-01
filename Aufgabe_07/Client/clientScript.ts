@@ -3,7 +3,6 @@ namespace L07_Hexenkessel {
     let serverURL: string = "https://ela-ela.herokuapp.com";
 
     export async function sendToServer(): Promise <void> {
-        
         //serverURL += "/speichern";
 
         let formData: FormData = new FormData(document.forms[0]);
@@ -37,4 +36,21 @@ namespace L07_Hexenkessel {
         alert(responseText);
 
     }
+
+
+    export async function getFromServer(): Promise <void> {
+
+        serverURL += "/get";      
+
+       
+        let response: Response =  await fetch(serverURL);
+
+        let responseText: string = await response.text();
+        console.log(responseText);
+        
+        alert(responseText);
+
+    }
+
+
 }

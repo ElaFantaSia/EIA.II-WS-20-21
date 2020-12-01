@@ -24,6 +24,7 @@ var L07_Hexenkessel;
     let buttonAddToRecipe;
     let buttonAbschicken;
     let buttonClearRecipe;
+    let buttonGet;
     //Event listener hinzufügen an alle input elemente
     async function handleLoad(_event) {
         console.log("handleLoad");
@@ -49,6 +50,7 @@ var L07_Hexenkessel;
         buttonAddToRecipe = document.querySelector("#addToRecipe");
         buttonAbschicken = document.querySelector("#buttonSent");
         buttonClearRecipe = document.querySelector("#buttonClear");
+        buttonGet = document.querySelector("#buttonGet");
         name.addEventListener("input", displayName);
         description.addEventListener("input", displayDescription);
         kindOfPotion.addEventListener("click", displayKindOfPotion);
@@ -65,6 +67,7 @@ var L07_Hexenkessel;
         buttonAddToRecipe.addEventListener("click", displayAdd);
         buttonAbschicken.addEventListener("click", hndSendToServer);
         buttonClearRecipe.addEventListener("click", deleteContent);
+        buttonGet.addEventListener("click", L07_Hexenkessel.getFromServer);
     }
     //Funktinen zum auslesen bei veränderung erstellen
     let divname = document.querySelector("#divname");

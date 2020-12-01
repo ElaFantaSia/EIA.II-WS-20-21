@@ -29,5 +29,13 @@ var L07_Hexenkessel;
         alert(responseText);
     }
     L07_Hexenkessel.sendToServer = sendToServer;
+    async function getFromServer() {
+        serverURL += "/get";
+        let response = await fetch(serverURL);
+        let responseText = await response.text();
+        console.log(responseText);
+        alert(responseText);
+    }
+    L07_Hexenkessel.getFromServer = getFromServer;
 })(L07_Hexenkessel || (L07_Hexenkessel = {}));
 //# sourceMappingURL=clientScript.js.map

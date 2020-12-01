@@ -30,6 +30,7 @@ namespace L07_Hexenkessel {
     let buttonAddToRecipe: HTMLButtonElement;
     let buttonAbschicken: HTMLButtonElement;
     let buttonClearRecipe: HTMLButtonElement;
+    let buttonGet: HTMLButtonElement;
 
    
  //Event listener hinzufügen an alle input elemente
@@ -60,6 +61,7 @@ namespace L07_Hexenkessel {
         buttonAddToRecipe = <HTMLButtonElement> document.querySelector ("#addToRecipe");
         buttonAbschicken = <HTMLButtonElement> document.querySelector ("#buttonSent");
         buttonClearRecipe = <HTMLButtonElement> document.querySelector ("#buttonClear");
+        buttonGet = <HTMLButtonElement> document.querySelector ("#buttonGet");
         
 
         name.addEventListener("input", displayName);
@@ -77,8 +79,8 @@ namespace L07_Hexenkessel {
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
         buttonAbschicken.addEventListener("click", hndSendToServer); 
-        
         buttonClearRecipe.addEventListener("click", deleteContent);
+        buttonGet.addEventListener("click", getFromServer);
     }
 
     
