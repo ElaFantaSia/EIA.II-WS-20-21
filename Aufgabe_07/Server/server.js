@@ -46,12 +46,13 @@ var L07_Hexenkessel;
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
                 storeOrder(url.query);
+                _response.end();
             }
             else if (path == "/get") {
                 orders.find({}).toArray(function (err, result) {
                     if (err)
                         throw err;
-                    let resultString = "1";
+                    let resultString = "";
                     //resultString += "[";
                     for (let i = 0; i < result.length; i++) {
                         resultString += JSON.stringify(result[i]);
@@ -60,6 +61,7 @@ var L07_Hexenkessel;
                     }
                     //resultString += "]";
                     _response.write(JSON.stringify(resultString));
+                    _response.end();
                 });
             }
         }

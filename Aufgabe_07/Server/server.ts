@@ -65,6 +65,7 @@ export namespace L07_Hexenkessel {
                 _response.write(jsonString);
     
                 storeOrder(url.query);
+                _response.end();
             }
             else if (path == "/get") {
                 orders.find({}).toArray(function (err: Mongo.MongoError, result: string[]): void {
@@ -72,7 +73,7 @@ export namespace L07_Hexenkessel {
                     if (err)
                         throw err;
 
-                    let resultString: string = "1";
+                    let resultString: string = "";
                     //resultString += "[";
                     for (let i: number = 0; i < result.length; i++) {
                         resultString += JSON.stringify(result[i]);
@@ -81,7 +82,7 @@ export namespace L07_Hexenkessel {
                     }
                     //resultString += "]";
                     _response.write(JSON.stringify(resultString));
-
+                    _response.end();
 
 
                 });
