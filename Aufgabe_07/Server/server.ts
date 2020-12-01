@@ -52,16 +52,21 @@ export namespace L07_Hexenkessel {
         
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            for (let key in url.query) {
-                _response.write(key + ":" + url.query[key] + "</br>");
-          
-            } 
-            console.log(url.query);
+            let path: string | null = url.pathname;
+            if (path == "/save") {
 
-            let jsonString: string = JSON.stringify(url.query);
-            _response.write(jsonString);
-
-            storeOrder(url.query);
+                for (let key in url.query) {
+                    _response.write(key + ":" + url.query[key] + "</br>");
+              
+                } 
+                console.log(url.query);
+    
+                let jsonString: string = JSON.stringify(url.query);
+                _response.write(jsonString);
+    
+                storeOrder(url.query);
+            }
+            
         }  
 
         _response.end();
@@ -86,6 +91,7 @@ export namespace L07_Hexenkessel {
     } 
     function storeOrder(_order: Order): void {
         orders.insert(_order); 
+        
     }
 }
 

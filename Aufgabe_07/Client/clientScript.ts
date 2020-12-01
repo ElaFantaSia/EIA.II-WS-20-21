@@ -1,6 +1,6 @@
 namespace L07_Hexenkessel { 
 
-    let serverURL: string = "https://ela-ela.herokuapp.com/";
+    let serverURL: string = "https://ela-ela.herokuapp.com";
 
     export async function sendToServer(): Promise <void> {
         
@@ -11,6 +11,7 @@ namespace L07_Hexenkessel {
         //let response: Response = await fetch(URL + "?" + query.toString());
         //console.log(URL);
         //let responseText: string = await response.text();
+        serverURL += "/save";
         serverURL += "?" + query.toString();
         //console.log(serverURL);
         /* let formData: FormData = new FormData(document.forms[0]);
@@ -31,6 +32,8 @@ namespace L07_Hexenkessel {
 
         let responseText: string = await response.text();
         console.log(responseText);
+        let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
+        formular.reset();
         alert(responseText);
 
     }

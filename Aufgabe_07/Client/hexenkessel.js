@@ -63,7 +63,7 @@ var L07_Hexenkessel;
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
-        buttonAbschicken.addEventListener("click", L07_Hexenkessel.sendToServer);
+        buttonAbschicken.addEventListener("click", hndSendToServer);
         buttonClearRecipe.addEventListener("click", deleteContent);
     }
     //Funktinen zum auslesen bei veränderung erstellen
@@ -93,11 +93,12 @@ var L07_Hexenkessel;
         //for (/* wie jetzt auf value von Add zugreifen? */) {} ;
         console.log("calculate...");
     }
+    let ingredientsDiv;
     let divAdd = document.querySelector("#divadd");
     function displayAdd() {
         console.log(add.value);
         //divAdd.innerHTML += "" + add.value + "- " + amount.value + " gramm";
-        let ingredientsDiv = document.createElement("div");
+        ingredientsDiv = document.createElement("div");
         ingredientsDiv.innerHTML = "" + add.value + "- " + amount.value + " gramm";
         let buttonDelete = document.createElement("button");
         buttonDelete.addEventListener("click", deleteIngredients);
@@ -156,6 +157,19 @@ var L07_Hexenkessel;
     function displayColor() {
         console.log(color.value);
         divcolor.innerHTML = "" + color.value;
+    }
+    function hndSendToServer() {
+        /* divname.innerHTML = "";
+        divdescription.innerHTML = "";
+        divkindOfPotion.innerHTML = "";
+        divduration.innerHTML = "";
+        //ingredientsDiv.innerHTML = "";
+        divheat.innerHTML = "";
+        divcool.innerHTML = "";
+        divstir.innerHTML = "";
+        consistency.innerHTML = "";
+        divcolor.innerHTML = ""; */
+        L07_Hexenkessel.sendToServer();
     }
     //let contentDivOrder:  HTMLDivElement = <HTMLDivElement>document.getElementById("deleteContent");
     function deleteContent() {

@@ -1,7 +1,7 @@
 "use strict";
 var L07_Hexenkessel;
 (function (L07_Hexenkessel) {
-    let serverURL = "https://ela-ela.herokuapp.com/";
+    let serverURL = "https://ela-ela.herokuapp.com";
     async function sendToServer() {
         //serverURL += "/speichern";
         let formData = new FormData(document.forms[0]);
@@ -9,6 +9,7 @@ var L07_Hexenkessel;
         //let response: Response = await fetch(URL + "?" + query.toString());
         //console.log(URL);
         //let responseText: string = await response.text();
+        serverURL += "/save";
         serverURL += "?" + query.toString();
         //console.log(serverURL);
         /* let formData: FormData = new FormData(document.forms[0]);
@@ -23,6 +24,8 @@ var L07_Hexenkessel;
         let response = await fetch(serverURL);
         let responseText = await response.text();
         console.log(responseText);
+        let formular = document.getElementById("hexenkesselForm");
+        formular.reset();
         alert(responseText);
     }
     L07_Hexenkessel.sendToServer = sendToServer;

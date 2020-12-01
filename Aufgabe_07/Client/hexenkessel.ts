@@ -76,10 +76,12 @@ namespace L07_Hexenkessel {
         solid.addEventListener("input", displaySolid);
         color.addEventListener("input", displayColor);
         buttonAddToRecipe.addEventListener("click", displayAdd);
-        buttonAbschicken.addEventListener("click", sendToServer); 
+        buttonAbschicken.addEventListener("click", hndSendToServer); 
         
         buttonClearRecipe.addEventListener("click", deleteContent);
     }
+
+    
 
     
   //Funktinen zum auslesen bei veränderung erstellen
@@ -106,6 +108,8 @@ namespace L07_Hexenkessel {
         console.log(duration.value);
         divduration.innerHTML = "" + duration.value;
     }
+
+    
     
 
     function calculateTotal(): void {
@@ -113,12 +117,13 @@ namespace L07_Hexenkessel {
         console.log("calculate...");
     }
 
+    let ingredientsDiv: HTMLDivElement;
     let divAdd: HTMLDivElement = <HTMLDivElement>document.querySelector("#divadd");
     function displayAdd (): void {
         console.log(add.value);
         //divAdd.innerHTML += "" + add.value + "- " + amount.value + " gramm";
 
-        let ingredientsDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
+        ingredientsDiv = <HTMLDivElement>document.createElement("div");
         ingredientsDiv.innerHTML = "" + add.value + "- " + amount.value + " gramm";
         let buttonDelete: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
         buttonDelete.addEventListener("click", deleteIngredients);
@@ -158,6 +163,8 @@ namespace L07_Hexenkessel {
         console.log(stir.value);
         divstir.innerHTML = "" + stir.value;
     }
+
+    
     //let divliquid: HTMLDivElement = <HTMLDivElement>document.querySelector("#divliquid");
     function displayLiquid (): void {
         displayConsistency(liquid);
@@ -180,6 +187,21 @@ namespace L07_Hexenkessel {
         console.log(color.value);
         divcolor.innerHTML = "" + color.value;
     }  
+
+    function hndSendToServer(): void {
+        
+        /* divname.innerHTML = "";
+        divdescription.innerHTML = "";
+        divkindOfPotion.innerHTML = "";
+        divduration.innerHTML = "";
+        //ingredientsDiv.innerHTML = "";
+        divheat.innerHTML = "";
+        divcool.innerHTML = "";
+        divstir.innerHTML = "";
+        consistency.innerHTML = "";
+        divcolor.innerHTML = ""; */
+        sendToServer();
+    }
 
     //let contentDivOrder:  HTMLDivElement = <HTMLDivElement>document.getElementById("deleteContent");
 
