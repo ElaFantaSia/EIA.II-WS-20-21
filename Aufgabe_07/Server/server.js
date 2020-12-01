@@ -65,7 +65,7 @@ var L07_Hexenkessel;
                 });
             }
         }
-        _response.end();
+        //_response.end();
         /* if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             
