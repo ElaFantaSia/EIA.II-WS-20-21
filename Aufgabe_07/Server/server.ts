@@ -66,7 +66,7 @@ export namespace L07_Hexenkessel {
     
                 storeOrder(url.query);
             }
-            else if (path == "get") {
+            else if (path == "/get") {
                 orders.find({}).toArray(function (err: Mongo.MongoError, result: string[]): void {
 
                     if (err)

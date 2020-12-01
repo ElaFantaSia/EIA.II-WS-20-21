@@ -22,6 +22,7 @@ var L07_Hexenkessel;
         //let formular: HTMLFormElement = <HTMLFormElement>document.getElementById("hexenkesselForm");
         //formular.reset();
         //window.alert(responseText); 
+        console.log("Sending...");
         let response = await fetch(serverURL);
         let responseText = await response.text();
         console.log(responseText);
@@ -33,6 +34,7 @@ var L07_Hexenkessel;
     async function getFromServer() {
         serverURL = "https://ela-ela.herokuapp.com";
         serverURL += "/get";
+        console.log("Get...");
         let response = await fetch(serverURL);
         let responseText = await response.text();
         console.log(responseText);

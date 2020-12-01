@@ -47,7 +47,7 @@ var L07_Hexenkessel;
                 _response.write(jsonString);
                 storeOrder(url.query);
             }
-            else if (path == "get") {
+            else if (path == "/get") {
                 orders.find({}).toArray(function (err, result) {
                     if (err)
                         throw err;

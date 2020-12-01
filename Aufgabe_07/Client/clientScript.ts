@@ -25,7 +25,7 @@ namespace L07_Hexenkessel {
         //formular.reset();
         //window.alert(responseText); 
 
-        
+        console.log("Sending...");
 
        
         let response: Response =  await fetch(serverURL);
@@ -44,7 +44,7 @@ namespace L07_Hexenkessel {
         serverURL = "https://ela-ela.herokuapp.com";
         serverURL += "/get";      
 
-       
+        console.log("Get...");
         let response: Response =  await fetch(serverURL);
 
         let responseText: string = await response.text();
