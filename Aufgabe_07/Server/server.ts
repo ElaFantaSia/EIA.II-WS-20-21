@@ -72,14 +72,14 @@ export namespace L07_Hexenkessel {
                     if (err)
                         throw err;
 
-                    let resultString: string = "";
-                    resultString += "[";
+                    let resultString: string = "1";
+                    //resultString += "[";
                     for (let i: number = 0; i < result.length; i++) {
                         resultString += JSON.stringify(result[i]);
                         if (i != result.length - 1)
                             resultString += ",";
                     }
-                    resultString += "]";
+                    //resultString += "]";
                     _response.write(JSON.stringify(resultString));
 
 

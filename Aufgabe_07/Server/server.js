@@ -51,14 +51,14 @@ var L07_Hexenkessel;
                 orders.find({}).toArray(function (err, result) {
                     if (err)
                         throw err;
-                    let resultString = "";
-                    resultString += "[";
+                    let resultString = "1";
+                    //resultString += "[";
                     for (let i = 0; i < result.length; i++) {
                         resultString += JSON.stringify(result[i]);
                         if (i != result.length - 1)
                             resultString += ",";
                     }
-                    resultString += "]";
+                    //resultString += "]";
                     _response.write(JSON.stringify(resultString));
                 });
             }
