@@ -83,7 +83,7 @@ namespace L08_winterwonderland {
         console.log("Cloud", _position, _size);
 
         let nParticles: number = 99;
-        let radiusParticle: number = 10;
+        let radiusParticle: number = 11;
         let particle: Path2D = new Path2D();
         let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
 
@@ -178,7 +178,7 @@ namespace L08_winterwonderland {
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, -crc2.canvas.height);
         gradient.addColorStop(0, _colorLow);
-        gradient.addColorStop(0.7, _colorHigh);
+        gradient.addColorStop(0.2, _colorHigh);
 
         crc2.fillStyle = gradient;
         crc2.fill();

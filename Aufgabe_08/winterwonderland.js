@@ -59,7 +59,7 @@ var L08_winterwonderland;
     function drawCloud(_position, _size) {
         console.log("Cloud", _position, _size);
         let nParticles = 99;
-        let radiusParticle = 10;
+        let radiusParticle = 11;
         let particle = new Path2D();
         let gradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
@@ -135,7 +135,7 @@ var L08_winterwonderland;
         crc2.closePath();
         let gradient = crc2.createLinearGradient(0, 0, 0, -crc2.canvas.height);
         gradient.addColorStop(0, _colorLow);
-        gradient.addColorStop(0.7, _colorHigh);
+        gradient.addColorStop(0.2, _colorHigh);
         crc2.fillStyle = gradient;
         crc2.fill();
         crc2.restore();
