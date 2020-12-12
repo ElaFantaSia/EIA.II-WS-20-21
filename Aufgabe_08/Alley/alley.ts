@@ -14,10 +14,16 @@ namespace L08_Canvas_Alley {
         return;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d"); 
 
+        let horizon: number = crc2.canvas.height * golden;
+
         drawBackground();
-        drawSun({x: 100, y: 75});
+        drawSun({ x: 100, y: 75});
         //Was ist das für ein Objekt? In den Klammern? Interface!? Wozu ist das noch mal gut?
-        drawCloud({x: 500, y: 125}, {x: 250, y: 75});
+        drawCloud({ x: 500, y: 125}, { x: 250, y: 75});
+        drawStreet({ x: crc2.canvas.width / 2, y: horizon }, 100, 600);
+        drawMountains({ x: 0, y: horizon}, 75, 200, "grey", "white");
+        drawMountains({ x: 0, y: horizon}, 50, 150, "grey", "lightgrey");
+         
     }
 
     // 500, 125 -position in coordinate system; 250, 75 -shape of rectangle within which the cloud shall be created
@@ -79,7 +85,56 @@ namespace L08_Canvas_Alley {
             crc2.fill(particle);
             crc2.restore();
         }
+        crc2.restore();   
+    }
+
+    function drawStreet(_position: Vector, _widthBack: number, _widthFront: number): void {
+        console.log("Street", _position, _widthBack, _widthFront);
+        crc2.beginPath();
+        crc2.moveTo(_position.x + _widthBack / 2, _position.y);
+        crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
+        crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
+        crc2.lineTo(_position.x - _widthBack / 2, _position.y);
+        crc2.closePath();
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, _position.y, 0, crc2.canvas.height);
+        gradient.addColorStop(0, "grey");
+        gradient.addColorStop(0.6, "darkgrey");
+
+        crc2.fillStyle = gradient;
+        crc2.fill();
+    }
+
+    function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
+        console.log("Mountains");
+        let stepMin: number = 50;
+        let stepMax: number = 150;
+        let x: number = 0;
+
+        crc2.save(); 
+        crc2.translate(_position.x, _position.y);
+
+        crc2.beginPath();
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, -_max);
+
+        do    {
+            x += stepMin +  Math.random() * (stepMax - stepMin);
+            let y: number = -_min -  Math.random() * (_max - _min);
+
+            crc2.lineTo(x, y);
+        } while (x < crc2.canvas.width);
+
+        crc2.lineTo(x, 0);
+        crc2.closePath();
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, -_max);
+        gradient.addColorStop(0, _colorLow);
+        gradient.addColorStop(0.7, _colorHigh);
+
+        crc2.fillStyle = gradient;
+        crc2.fill();
+
         crc2.restore();
-        
     }
 }
