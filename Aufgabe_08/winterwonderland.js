@@ -35,7 +35,7 @@ var L08_winterwonderland;
     function drawBackground() {
         console.log("Background");
         let gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
-        gradient.addColorStop(0, "m");
+        gradient.addColorStop(0, "blue");
         /* gradient.addColorStop(quarter, "lightblue"); */
         gradient.addColorStop(half, "white");
         //half = (crc2.canvas.height / 2 );

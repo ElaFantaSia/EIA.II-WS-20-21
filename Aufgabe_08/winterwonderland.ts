@@ -48,7 +48,7 @@ namespace L08_winterwonderland {
         console.log("Background");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
-        gradient.addColorStop(0, "m");
+        gradient.addColorStop(0, "blue");
         /* gradient.addColorStop(quarter, "lightblue"); */
         gradient.addColorStop(half, "white");
 
