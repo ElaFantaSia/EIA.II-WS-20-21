@@ -38,7 +38,7 @@ namespace L08_winterwonderland {
         drawPiste({ x: 0, y: horizon}, {x: crc2.canvas.width / 2, y: crc2.canvas.height / 2});
         hndDrawTrees({ x: crc2.canvas.width * 0.1, y: crc2.canvas.height * 0.8}, {x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.1});
         hndDrawBoarder({ x: crc2.canvas.width * 0.3, y: crc2.canvas.height * 0.8}, {x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.1});
-        drawBoarder();
+        //drawBoarder();
         drawLift();
         //drawSkier
         hndDrawSnow(crc2.canvas.width, crc2.canvas.height);
@@ -145,12 +145,11 @@ namespace L08_winterwonderland {
 
    function drawLiftstation(): void {
         crc2.beginPath();
-        crc2.moveTo(0, 0);
-        crc2.lineTo(crc2.canvas.width, crc2.canvas.height);
-        //crc2.moveTo(crc2.canvas.width * 0.7, horizon);
+     
+        crc2.moveTo(crc2.canvas.width * 0.7, horizon);
         
-        //crc2.lineTo(crc2.canvas.width * 0.7, crc2.canvas.height * 0.4);
-        //crc2.strokeStyle("black");
+        crc2.lineTo(crc2.canvas.width * 0.7, crc2.canvas.height * 0.4);
+        crc2.strokeStyle = "black";
         crc2.stroke();
     }
 
