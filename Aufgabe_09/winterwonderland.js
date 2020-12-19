@@ -5,7 +5,7 @@ var L08_winterwonderland;
     let crc2;
     //let quarter: number = 0.25;
     let half = 0.5;
-    //let horizon: number;
+    let horizon;
     //let posMountains: number;
     let center;
     let container = [];
@@ -22,6 +22,7 @@ var L08_winterwonderland;
         drawBackground();
         drawSun({ x: crc2.canvas.width * 0.8, y: crc2.canvas.height * 0.15 });
         drawMountainsBig(posMountains, 80, 120, "grey", "white");
+        drawLiftstation();
         drawMountainsSmall(posMountains, 50, 70, "lightgrey", "white");
         drawCloud({ x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.15 }, { x: crc2.canvas.width * 0.18, y: crc2.canvas.height * 0.5 });
         drawCloud({ x: crc2.canvas.width * 0.4, y: crc2.canvas.height * 0.13 }, { x: crc2.canvas.width * 0.08, y: crc2.canvas.height * 0.9 });
@@ -102,6 +103,15 @@ var L08_winterwonderland;
         crc2.fillStyle = gradient;
         crc2.fill();
         crc2.restore();
+    }
+    function drawLiftstation() {
+        crc2.beginPath();
+        crc2.moveTo(0, 0);
+        crc2.lineTo(crc2.canvas.width, crc2.canvas.height);
+        //crc2.moveTo(crc2.canvas.width * 0.7, horizon);
+        //crc2.lineTo(crc2.canvas.width * 0.7, crc2.canvas.height * 0.4);
+        //crc2.strokeStyle("black");
+        crc2.stroke();
     }
     function drawMountainsSmall(_position, _min, _max, _colorLow, _colorHigh) {
         console.log("MountainsSmall", _position, _min, _max);

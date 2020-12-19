@@ -36,6 +36,7 @@ namespace L08_winterwonderland {
         drawCloud({ x: crc2.canvas.width * 0.4, y: crc2.canvas.height * 0.13 }, { x: crc2.canvas.width * 0.08, y: crc2.canvas.height * 0.9 });
         drawPiste({ x: 0, y: horizon}, {x: crc2.canvas.width / 2, y: crc2.canvas.height / 2});
         hndDrawTrees({ x: crc2.canvas.width * 0.1, y: crc2.canvas.height * 0.8}, {x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.1});
+        hndDrawBoarder({ x: crc2.canvas.width * 0.3, y: crc2.canvas.height * 0.8}, {x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.1});
         drawBoarder();
         drawLift();
         //drawSkier
@@ -261,12 +262,30 @@ namespace L08_winterwonderland {
         drawTrees(x, y);
     } */
 
+   function hndDrawBoarder(_position: Vector, _size: Vector): void {
+        console.log("HndBoarder", _position, _size);
+        let nBoarder: number = 5;
+        crc2.save();
+        crc2.translate(_position.x, _position.y);
+        
+
+        for (let drawn: number = 0; drawn < nBoarder; drawn++) {
+            
+            let x: number = (Math.random() - 0.5) * _size.x;
+            let y: number = - (Math.random() * _size.y);
+            
+            drawBoarder(x, y);
+        }
+        crc2.restore();
+    }
 
 
 
-   function drawBoarder(): void {
+   function drawBoarder(_x: number, _y: number): void {
         console.log("Boarder");
         
+        //crc2.save();
+        //crc2.translate(_x, _y);
         crc2.beginPath();
         crc2.ellipse(crc2.canvas.width * 0.3, crc2.canvas.height * 0.89, 2, 11, Math.PI / 2, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffff80";
@@ -291,6 +310,8 @@ namespace L08_winterwonderland {
         crc2.fill();
         crc2.closePath();
     }
+
+
 
 
    function drawLift(): void {
