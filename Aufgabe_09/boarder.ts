@@ -1,6 +1,10 @@
-class Boarder  {
+namespace L10_Winterwonderland {
 
-    constructor() {
-        console.log ("new boarder");
+    class Boarder  {
+
+        constructor() {
+            console.log ("new boarder");
+        }
     }
 }
+

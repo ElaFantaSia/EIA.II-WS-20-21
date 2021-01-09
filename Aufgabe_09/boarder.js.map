@@ -1,1 +1,1 @@
-{"version":3,"file":"boarder.js","sourceRoot":"","sources":["boarder.ts"],"names":[],"mappings":";AAAA,MAAM,OAAO;IAET;QACI,OAAO,CAAC,GAAG,CAAE,aAAa,CAAC,CAAC;IAChC,CAAC;CACJ"}
+{"version":3,"file":"boarder.js","sourceRoot":"","sources":["boarder.ts"],"names":[],"mappings":";AAAA,IAAU,oBAAoB,CAQ7B;AARD,WAAU,oBAAoB;IAE1B,MAAM,OAAO;QAET;YACI,OAAO,CAAC,GAAG,CAAE,aAAa,CAAC,CAAC;QAChC,CAAC;KACJ;AACL,CAAC,EARS,oBAAoB,KAApB,oBAAoB,QAQ7B"}

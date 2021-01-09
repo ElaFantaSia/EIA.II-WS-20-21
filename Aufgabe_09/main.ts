@@ -1,4 +1,4 @@
-namespace L08_winterwonderland {
+namespace L10_Winterwonderland {
     interface Vector {
          x: number;
          y: number;
@@ -29,7 +29,7 @@ namespace L08_winterwonderland {
          
  
          drawBackground();
-         drawSun({ x: crc2.canvas.width * 0.8 , y: crc2.canvas.height * 0.15});
+         drawSun(crc2.canvas.width * 0.8 , crc2.canvas.height * 0.15);
          drawMountainsBig(posMountains, 80, 120, "grey", "white");
          drawMountainsSmall(posMountains, 50, 70, "lightgrey", "white");
          drawCloud({ x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.15 }, { x: crc2.canvas.width * 0.18, y: crc2.canvas.height * 0.5 });
@@ -58,24 +58,27 @@ namespace L08_winterwonderland {
          crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
      }
  
-    function drawSun(_position: Vector): void {
-         console.log("Sun", _position);
- 
-         let r1: number = crc2.canvas.height * 0.05;
-         let r2: number = crc2.canvas.height * 0.15;
+    function drawSun(_x: number, _y: number): void {
          
-         let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
+        
+        let vectorSun: Vector = new Vector(_x, _y);
+        console.log("Sun", vectorSun);
+
+        let r1: number = crc2.canvas.height * 0.05;
+        let r2: number = crc2.canvas.height * 0.15;
+         
+        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
  
-         gradient.addColorStop(0, "HSLA(40, 70%, 90%, 1)");
-         gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
+        gradient.addColorStop(0, "HSLA(40, 70%, 90%, 1)");
+        gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
          
  
-         crc2.save();
-         crc2.translate(_position.x, _position.y);
-         crc2.fillStyle = gradient;
-         crc2.arc(0, 0, r2, 0, 2 * Math.PI);
-         crc2.fill();
-         crc2.restore();
+        crc2.save();
+        crc2.translate(vectorSun.x, vectorSun.y);
+        crc2.fillStyle = gradient;
+        crc2.arc(0, 0, r2, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.restore();
      }
  
  

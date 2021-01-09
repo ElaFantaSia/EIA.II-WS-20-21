@@ -1,6 +1,6 @@
 "use strict";
-var L08_winterwonderland;
-(function (L08_winterwonderland) {
+var L10_Winterwonderland;
+(function (L10_Winterwonderland) {
     window.addEventListener("load", handleLoad);
     let crc2;
     //let quarter: number = 0.25;
@@ -307,5 +307,5 @@ var L08_winterwonderland;
             crc2.fill();
         }
     }
-})(L08_winterwonderland || (L08_winterwonderland = {}));
+})(L10_Winterwonderland || (L10_Winterwonderland = {}));
 //# sourceMappingURL=winterwonderland.js.map

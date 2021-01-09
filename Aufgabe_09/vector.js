@@ -1,6 +1,6 @@
 "use strict";
-var L09_winterwonderland;
-(function (L09_winterwonderland) {
+var L10_Winterwonderland;
+(function (L10_Winterwonderland) {
     class Vector {
         constructor(_x, _y) {
             this.set(_x, _y);
@@ -24,6 +24,6 @@ var L09_winterwonderland;
             this.scale(length);
         }
     }
-    L09_winterwonderland.Vector = Vector;
-})(L09_winterwonderland || (L09_winterwonderland = {}));
+    L10_Winterwonderland.Vector = Vector;
+})(L10_Winterwonderland || (L10_Winterwonderland = {}));
 //# sourceMappingURL=vector.js.map

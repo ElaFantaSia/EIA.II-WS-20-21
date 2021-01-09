@@ -1,6 +1,9 @@
-class WinterwonderlandObjects {
-    //postion
-
-    //farbe
+namespace L10_Winterwonderland {
+    class WinterwonderlandObjects {
+        //postion
     
+        //farbe
+        
+    }
 }
+

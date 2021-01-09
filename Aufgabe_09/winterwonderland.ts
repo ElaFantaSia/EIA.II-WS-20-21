@@ -1,4 +1,4 @@
-namespace L08_winterwonderland {
+namespace L10_Winterwonderland {
    interface Vector {
         x: number;
         y: number;

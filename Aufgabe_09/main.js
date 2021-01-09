@@ -1,6 +1,6 @@
 "use strict";
-var L08_winterwonderland;
-(function (L08_winterwonderland) {
+var L10_Winterwonderland;
+(function (L10_Winterwonderland) {
     window.addEventListener("load", handleLoad);
     let crc2;
     //let quarter: number = 0.25;
@@ -20,7 +20,7 @@ var L08_winterwonderland;
         let horizon = crc2.canvas.height;
         let posMountains = { x: 0, y: horizon };
         drawBackground();
-        drawSun({ x: crc2.canvas.width * 0.8, y: crc2.canvas.height * 0.15 });
+        drawSun(crc2.canvas.width * 0.8, crc2.canvas.height * 0.15);
         drawMountainsBig(posMountains, 80, 120, "grey", "white");
         drawMountainsSmall(posMountains, 50, 70, "lightgrey", "white");
         drawCloud({ x: crc2.canvas.width * 0.2, y: crc2.canvas.height * 0.15 }, { x: crc2.canvas.width * 0.18, y: crc2.canvas.height * 0.5 });
@@ -43,15 +43,16 @@ var L08_winterwonderland;
         crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
-    function drawSun(_position) {
-        console.log("Sun", _position);
+    function drawSun(_x, _y) {
+        let vectorSun = new L10_Winterwonderland.Vector(_x, _y);
+        console.log("Sun", vectorSun);
         let r1 = crc2.canvas.height * 0.05;
         let r2 = crc2.canvas.height * 0.15;
         let gradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
         gradient.addColorStop(0, "HSLA(40, 70%, 90%, 1)");
         gradient.addColorStop(1, "HSLA(60, 100%, 50%, 0)");
         crc2.save();
-        crc2.translate(_position.x, _position.y);
+        crc2.translate(vectorSun.x, vectorSun.y);
         crc2.fillStyle = gradient;
         crc2.arc(0, 0, r2, 0, 2 * Math.PI);
         crc2.fill();
@@ -319,5 +320,5 @@ var L08_winterwonderland;
             crc2.fill();
         }
     }
-})(L08_winterwonderland || (L08_winterwonderland = {}));
+})(L10_Winterwonderland || (L10_Winterwonderland = {}));
 //# sourceMappingURL=main.js.map
