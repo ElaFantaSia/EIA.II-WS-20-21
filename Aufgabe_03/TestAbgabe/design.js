@@ -1,10 +1,21 @@
 "use strict";
 var Firework;
 (function (Firework) {
+    let serverURL = "http://localhost:5001";
+    let deleteButton = document.getElementById("deleteAll");
+    deleteButton.addEventListener("click", deleteAll);
+    async function deleteAll() {
+        let serverURLDelete = serverURL + "/removeAll";
+        await fetch(serverURLDelete);
+    }
     let color1 = document.getElementById("colorpicker1");
+    color1.addEventListener("change", drawExplosion);
     let color2 = document.getElementById("colorpicker2");
+    color2.addEventListener("change", drawExplosion);
     let radius = document.getElementById("radius");
+    radius.addEventListener("change", drawExplosion);
     let particles = document.getElementById("particles");
+    particles.addEventListener("change", drawExplosion);
     let fireCrackerDiv1 = document.getElementById("firecracker1");
     fireCrackerDiv1.addEventListener("click", function () {
         chooseFirecracker(this);
@@ -34,6 +45,7 @@ var Firework;
                 radius.value = firecrackers[i].radius.toString();
             }
         }
+        drawExplosion();
     }
     function removeColor() {
         fireCrackerDiv1.classList.remove("selected");
@@ -58,5 +70,31 @@ var Firework;
         let response = await fetch(url);
         console.log(response);
     }
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height / 2;
+    function drawExplosion() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        // ctx.beginPath();
+        // ctx.arc(centerX, centerY, Number(radius.value), 0, 2 * Math.PI);
+        // ctx.stroke();
+        let circleSteps = Math.PI * 2 / Number(particles.value);
+        for (let i = 0; i < Math.PI * 2; i += circleSteps) {
+            drawParticle(i, 2);
+        }
+        ctx.restore();
+    }
+    function drawParticle(radiusParticle, lineWidth) {
+        ctx.setTransform(1, 0, 0, 1, centerX, centerY);
+        ctx.rotate(radiusParticle);
+        ctx.translate(0, radiusParticle);
+        let gradient = ctx.createLinearGradient(-lineWidth / 2, 0, lineWidth, Number(radius.value));
+        gradient.addColorStop(0, color1.value);
+        gradient.addColorStop(1, color2.value);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(-lineWidth / 2, 0, lineWidth, Number(radius.value));
+    }
 })(Firework || (Firework = {}));
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=design.js.map

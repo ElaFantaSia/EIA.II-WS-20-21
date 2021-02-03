@@ -10,9 +10,7 @@ var ServerFirework;
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;
-    //let databaseURL: string =  "mongodb://localhost:27017";
     let databaseURL = "mongodb+srv://MyMongoDBUser:abc123abc123@cluster0.bscp6.mongodb.net/Endabgabe?retryWrites=true&w=majority";
-    //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
     startServer(port);
     connectToDatabase(databaseURL);
     function startServer(_port) {
@@ -29,7 +27,6 @@ var ServerFirework;
         firecrackers = mongoClient.db("Endabgabe").collection("Firecrackers");
     }
     async function handleRequest(_request, _response) {
-        console.log(_request.url);
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         if (_request.url) {
@@ -37,14 +34,13 @@ var ServerFirework;
             console.log(url);
             let path = url.pathname;
             if (path == "/save") {
-                let firecracker = {
-                    firecrackerId: Number(url.query.firecrackerId),
-                    color1: url.query.color1,
-                    color2: url.query.color2,
-                    particles: Number(url.query.particles),
-                    radius: Number(url.query.radius)
-                };
-                storeFirecracker(firecracker);
+                storeFirecracker(url);
+                _response.end();
+            }
+            else if (path == "/getOne") {
+                let firecrackerItem = await firecrackers.findOne({ firecrackerId: url.query.firecrackerId });
+                console.log(JSON.stringify(firecrackerItem));
+                _response.write(JSON.stringify(firecrackerItem));
                 _response.end();
             }
             else if (path == "/getAll") {
@@ -53,11 +49,20 @@ var ServerFirework;
                 _response.write(JSON.stringify(firecrackersArray));
                 _response.end();
             }
+            else if (path == "/removeAll") {
+                firecrackers.deleteMany({});
+                _response.end();
+            }
         }
     }
-    function storeFirecracker(_firecracker) {
-        firecrackers.insertOne(_firecracker);
+    async function storeFirecracker(_url) {
+        let firecrackerItem = await firecrackers.findOne({ firecrackerId: _url.query.firecrackerId });
+        if (firecrackerItem != null)
+            firecrackers.updateOne({ firecrackerId: _url.query.firecrackerId }, { $set: { firecrackerId: _url.query.firecrackerId,
+                    color1: _url.query.color1, color2: _url.query.color2, particles: _url.query.particles, radius: _url.query.radius } });
+        else
+            firecrackers.insertOne({ firecrackerId: _url.query.firecrackerId,
+                color1: _url.query.color1, color2: _url.query.color2, particles: _url.query.particles, radius: _url.query.radius });
     }
 })(ServerFirework = exports.ServerFirework || (exports.ServerFirework = {}));
-/* abc123 x2 MyMongoDBUser */ 
 //# sourceMappingURL=server.js.map

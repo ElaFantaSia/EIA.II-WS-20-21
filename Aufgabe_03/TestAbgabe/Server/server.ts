@@ -3,23 +3,13 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace ServerFirework {
-    interface Firecracker {
-        firecrackerId: number;
-        color1: string;
-        color2: string;
-        radius: number;
-        particles: number; 
-    }
-
     let firecrackers: Mongo.Collection;
 
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
         port = 5001;
 
-    //let databaseURL: string =  "mongodb://localhost:27017";
     let databaseURL: string =  "mongodb+srv://MyMongoDBUser:abc123abc123@cluster0.bscp6.mongodb.net/Endabgabe?retryWrites=true&w=majority";
-    //mongodb+srv://MyMongoDBUser:<password>@cluster0.bscp6.mongodb.net/<dbname>?retryWrites=true&w=majority
 
     startServer(port);
     connectToDatabase(databaseURL); 
@@ -42,27 +32,22 @@ export namespace ServerFirework {
 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log(_request.url);
-
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.setHeader("content-type", "text/html; charset=utf-8");
-        
-
         
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             console.log(url);
             let path: string | null = url.pathname;
             if (path == "/save") {
+                storeFirecracker(url);
+                _response.end();
+            }
+            else if (path == "/getOne") {
                 
-                let firecracker: Firecracker = {
-                    firecrackerId:  Number(url.query.firecrackerId),
-                    color1: <string>url.query.color1,
-                    color2: <string>url.query.color2,
-                    particles: Number(url.query.particles),
-                    radius: Number(url.query.radius)
-                };
-                storeFirecracker(firecracker);
+                let firecrackerItem: string[] | null = await firecrackers.findOne({firecrackerId: url.query.firecrackerId});
+                console.log(JSON.stringify(firecrackerItem));
+                _response.write(JSON.stringify(firecrackerItem));
                 _response.end();
             }
             else if (path == "/getAll") {
@@ -72,16 +57,20 @@ export namespace ServerFirework {
                 _response.write(JSON.stringify(firecrackersArray));
                 _response.end();
             }
+            else if (path == "/removeAll") {
+                firecrackers.deleteMany({});
+                _response.end();
+            }
             
         }  
     } 
-    function storeFirecracker(_firecracker: Firecracker): void {
-        firecrackers.insertOne(_firecracker); 
-        
+    async function storeFirecracker(_url: Url.UrlWithParsedQuery): Promise<void> {
+        let firecrackerItem: string[] | null = await firecrackers.findOne({firecrackerId: _url.query.firecrackerId});
+        if (firecrackerItem != null)
+            firecrackers.updateOne({firecrackerId: _url.query.firecrackerId}, { $set: {firecrackerId: _url.query.firecrackerId, 
+               color1 : _url.query.color1, color2: _url.query.color2, particles: _url.query.particles, radius: _url.query.radius}});
+        else
+            firecrackers.insertOne({firecrackerId: _url.query.firecrackerId, 
+                color1 : _url.query.color1, color2: _url.query.color2, particles: _url.query.particles, radius: _url.query.radius}); 
     }
 }
-
-
-
-
-/* abc123 x2 MyMongoDBUser */

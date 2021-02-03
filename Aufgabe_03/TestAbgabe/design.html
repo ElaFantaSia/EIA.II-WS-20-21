@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="height">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="design.css">
+    <script src="design.js" defer></script>
     <title>Document</title>
 </head>
-<body class="flexbox">
+<body>
     <div class="allDesign">
         <div class="upperDiv">
             <p>dieser Text</p>
+            <input type="button" id="deleteAll" value="Delete">
         </div>
         <div class="middleDiv">
             <div class="fireworks">
@@ -19,7 +20,7 @@
                 <div class="firecracker"id="firecracker3" firecrackerId=3></div>
             </div>
             <div class="canvas">
-                <canvas></canvas>
+                <canvas id="canvas"></canvas>
             </div>
         </div>
         <div class="lowerDiv">
@@ -34,14 +35,14 @@
             </div>
             <div class="control">
                 <label>radius</label>
-                <input type="range" min="1" max="80" id="radius">
+                <input type="range" min="10" max="70" id="radius">
             </div>
             <div class="control">
                 <label>particles</label>
-                <input type="range" min="1" max="80" id="particles">
+                <input type="range" min="3" max="40" id="particles">
             </div>
             <div class="buttons">
-                <input type="button" value="Play">
+                <a href="play.html"><button type="button" id="sound2">Play</button></a>
                 <input type="button" value="Save" id="save">
             </div>
         </div>
