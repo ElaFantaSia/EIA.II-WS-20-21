@@ -1,6 +1,6 @@
 namespace Firework {
     export let ctx: CanvasRenderingContext2D;
-    let serverURL: string = "http://localhost:5001";
+    let serverURL: string = "https://ela-ela.herokuapp.com/";
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("canvas");
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
